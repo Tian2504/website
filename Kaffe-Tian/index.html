@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
-<!-- Tassen Tian 7.0 | Eine Datei. Keine Installation. Keine externen Abhaengigkeiten. -->
+<!-- Tassen Tian 8.1 | Eine Datei. Keine Installation. Keine externen Abhaengigkeiten. -->
 <html lang="de">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#f4f0e5" name="theme-color"/>
-<meta content="Tassen Tian 7.0: Kati, Konrad, 17 Figuren, Turbo bis 3,5-faches Grundtempo, Space-Cutscene und Tresor-Zahlenspiel." name="description"/>
-<meta content="Tassen Tian 7.0 - Space & Safe" property="og:title"/>
-<meta content="17 Figuren. Acht Welten. Ein Tresor. Bereit fuer die naechste Runde?" property="og:description"/>
+<meta content="Tassen Tian 8.1: Sina kommt dazu, 18 Figuren, neun Welten, endlos schneller nach 10.000 Punkten, drei Tresor-Packs und ein neues Party-Block-Level." name="description"/>
+<meta content="Tassen Tian 8.1 – Party Edition" property="og:title"/>
+<meta content="18 Figuren. Neun Welten. Ein Tresor. Und jetzt auch Party-Blocks zum Draufspringen." property="og:description"/>
 <meta content="website" property="og:type"/>
-<title>Tassen Tian 7.0 - Space & Safe</title>
+<title>Tassen Tian 8.1 – Party Edition</title>
 <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%23f4d17a' d='M0 0h48v48H0z'/%3E%3Cpath fill='%232e3029' d='M8 8h6V4h18v4h6v8h6v20H34v8H8z'/%3E%3Cpath fill='%23fffaf0' d='M12 16h20v22H12zm24 4h4v12h-4z'/%3E%3Cpath fill='%232e3029' d='M14 20h7v6h-7zm9 0h7v6h-7zm-4 11h8v2h-8z'/%3E%3C/svg%3E" rel="icon"/>
 <style>
 :root{--paper:#f4f0e5;--paper-light:#fffaf0;--ink:#303229;--muted:#737666;--line:#d4d6c7;--yellow:#f3cd70;--yellow-dark:#d7a942;--green:#667b5b;--rust:#b86341;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -49,8 +49,33 @@
 
 .toast{top:48px}
 @media(max-width:520px){.toast{top:41px;max-width:calc(100% - 16px)}}
+
+/* 8.1 / PARTY EDITION - compact start menu + modal changelog */
+.start-version{display:inline-flex;align-items:center;gap:7px;padding:5px 8px;border:1px solid #8fb9b4;background:#ebf5ea;color:#385c50;font:700 8px var(--mono);letter-spacing:.7px;margin:0 0 9px}
+.start-version-dot{height:6px;width:6px;background:#69a58c;box-shadow:2px 2px 0 #c6e5d0}
+.start-version strong{margin-left:5px;background:#e4b963;color:#293c35;padding:3px 5px;font-size:7px}
+.start-menu-actions{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px}
+.start-menu-actions .overlay-shop{margin:9px 0 0}
+.menu-news{margin-top:9px;border:1px solid #93b4a5;background:#e2ece0;color:#476656;padding:6px 10px;min-height:27px;font:700 8px var(--mono)}.menu-news:hover{background:#d2e4d7}
+.menu-news[hidden],.start-version[hidden]{display:none!important}
+.party-quickstart{background:#383b7d!important;color:#fff9e3!important;border-color:#303a36!important;box-shadow:3px 3px 0 #303a36!important;white-space:nowrap}.party-quickstart:disabled{opacity:.45}
+.news-dialog{position:fixed;inset:0;width:min(730px,calc(100% - 28px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:0;background:#f4f4dc;color:#243a3b;border:3px solid #263a41;box-shadow:8px 8px 0 #12232880;overflow:auto;z-index:10020}
+.news-dialog:not([open]){display:none!important}.news-dialog::backdrop{background:#142529dd;backdrop-filter:blur(4px)}
+.news-heading{position:relative;padding:25px 27px 19px;background:#253e4a;color:#f6f1d7;border-bottom:5px solid #e5bf75}
+.news-kicker{font:700 9px var(--mono);letter-spacing:2px;color:#c0e6db}
+.news-heading h2{font:900 clamp(22px,4vw,33px) var(--mono);letter-spacing:-1px;margin:10px 0 5px}.news-heading h2 span{color:#f9d473}
+.news-heading p{margin:0;color:#c6ddd4;font:12px/1.6 var(--sans)}
+.news-heading>button{position:absolute;top:12px;right:14px;width:38px;height:38px;border:1px solid #77949b;background:#3a5660;color:#fff1cf;font:24px var(--mono)}
+.news-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:19px}
+.news-item{display:flex;gap:12px;align-items:flex-start;border:1px solid #cbd5c4;background:#fffdf1;box-shadow:3px 3px 0 #dce6d3;padding:14px}
+.news-icon{font-size:24px;line-height:1.2}.news-item strong{display:block;font:900 11px/1.35 var(--mono);color:#304a45;margin-bottom:6px}.news-item p{margin:0;color:#69786c;font:11px/1.6 var(--sans)}
+.news-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e4ead9;border-top:1px solid #c6d2c1;padding:14px 19px}.news-bottom span{font:8px var(--mono);letter-spacing:1px}.news-bottom button{background:#edc86f;border:2px solid #293b39;padding:10px 13px;font:900 10px var(--mono);box-shadow:3px 3px 0 #293b39}
+.party-features{display:flex;flex-wrap:wrap;gap:8px;margin:10px auto 6px;justify-content:center}.party-features span{display:inline-flex;align-items:center;gap:5px;border:1px solid #b9cba7;background:#f5f6e9;padding:6px 10px;color:#4d6456;font:700 9px var(--mono)}
+@media(max-width:600px){.news-items{grid-template-columns:1fr;padding:13px;gap:10px}.news-heading{padding:19px 18px}.news-heading p{padding-right:14px}.news-bottom{flex-direction:column;align-items:stretch}.news-bottom button{width:100%;min-height:40px}.start-version{padding:4px 6px;font-size:7px}.start-menu-actions{gap:8px}.menu-news{font-size:7px;padding:5px 7px}.party-quickstart{grid-column:1/-1!important;grid-row:4!important;width:100%}.crew-launch{row-gap:7px!important}}
+@media(max-height:460px){.overlay-panel{padding-top:9px!important}.start-version{margin-bottom:3px}.start-hint{margin-top:6px}}
+
 </style>
-<style>/* WORLD TOUR 7.0 */
+<style>/* WORLD TOUR 8.1 */
 :root{--blue:#458edf;--blue-deep:#27518a;--night:#1e2b3e}
 [hidden]{display:none!important}.site-wrap{max-width:1160px}.intro{padding-top:22px;padding-bottom:23px}h1{width:min(100%,590px)}.tagline{font-size:14px}.pixel-stamp{top:23px;border-color:#84a6ba;color:#497794;transform:rotate(7deg)}
 .crew-picker{display:block;margin:0 3px 20px}.crew-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.crew-heading>div{display:flex;align-items:baseline;gap:15px}.crew-heading h2{margin:0}.crew-heading p{font-size:10px}.crew-options{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.crew-card{padding:6px 17px 6px 7px;min-height:73px}.crew-card.is-selected{padding:5px 16px 5px 6px}.crew-card canvas{width:66px;height:54px}.crew-copy{gap:6px}.crew-copy strong{font-size:14px;letter-spacing:.7px}.crew-copy>span{font-size:10px}.crew-note{display:none}.crew-wallet{margin:0;font:10px var(--mono);letter-spacing:.8px;color:#736b55}.crew-wallet b{color:var(--rust);font-size:15px}.crew-price{position:absolute;left:10px;bottom:7px;font:8px var(--mono);letter-spacing:.4px;color:#806b4a;background:#efe6cf;padding:2px 4px;border:1px solid #cbbb9a}.crew-card.is-locked{background:#f0efe9}.crew-card.is-locked .crew-check{background:transparent}.crew-card.is-locked .crew-copy strong{color:#615e54}.crew-card.is-locked:hover:not(:disabled){background:#f2ead7}.crew-card.is-selected .crew-price{border-color:var(--ink);background:#f3d88e;color:#40382a}
@@ -133,16 +158,16 @@
 <header class="site-header">
 <a aria-label="Tassen Tian, nach oben" class="brand" href="#">
 <canvas aria-hidden="true" height="46" id="brand-icon" width="44"></canvas>
-<span>TASSEN TIAN<span class="brand-sub">WORLD TOUR / 7.0</span></span>
+<span>TASSEN TIAN<span class="brand-sub">WORLD TOUR / 8.1</span></span>
 </a>
-<span class="header-note"><span class="status-dot"></span> 7.0 / SPACE & SAFE</span>
+<span class="header-note"><span class="status-dot"></span> 8.1 / PARTY EDITION</span>
 </header>
 <main>
 <section aria-labelledby="page-title" class="intro">
-<p class="eyebrow"><span></span> 17 FIGUREN. ACHT WELTEN. EIN TRESOR. <span></span></p>
+<p class="eyebrow"><span></span> 18 FIGUREN. NEUN WELTEN. EIN TRESOR. <span></span></p>
 <h1 id="page-title"><span class="sr-only">Tassen Tian</span><canvas aria-hidden="true" height="94" id="wordmark" width="704"></canvas><canvas aria-hidden="true" height="146" id="wordmark-small" width="352"></canvas></h1>
-<p class="tagline">Neue Crew. Raketenstart. Der Tresor wartet.</p>
-<span aria-hidden="true" class="pixel-stamp">WORLD<br/>TOUR<span>VERSION 7.0</span></span>
+<p class="tagline">Neue Party-Welt. Fünf Blocktypen. Deine Crew. Dein Rekord.</p>
+<span aria-hidden="true" class="pixel-stamp">WORLD<br/>TOUR<span>VERSION 8.1</span></span>
 </section>
 <section class="crew-launch" aria-label="Aktuelle Figur und Spielmenü">
 <div class="active-hero"><canvas id="active-preview" width="90" height="86" aria-hidden="true"></canvas><span><small>DEINE FIGUR</small><strong id="active-name">TIAN</strong></span></div>
@@ -150,6 +175,7 @@
 <button class="shop-launch" data-shop-open type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v13H4V8Zm4 0V5a4 4 0 0 1 8 0v3M8 12h8"/></svg> FIGUREN &amp; SHOP</button>
 <button class="practice-button" id="practice-button" type="button">BOSS TRAINIEREN <span aria-hidden="true">↗</span></button>
 <button class="practice-button vault-practice" id="vault-practice-button" type="button">TRESOR ÜBEN <span aria-hidden="true">⌗</span></button>
+<button class="practice-button party-quickstart" id="party-quickstart" type="button">🎲 PARTY-WELT STARTEN <span aria-hidden="true">↗</span></button>
 </section>
 <section aria-label="Tassen Tian Browser-Spiel" class="game-shell" id="game-shell">
 <div class="game-toolbar">
@@ -166,8 +192,8 @@
 </div>
 </div><div class="journey-bar"><span class="world-marker"><i id="world-dot"></i><span id="world-name">KARO-CAFÉ</span></span><span class="boss-road" id="boss-road"><span id="boss-road-label">BOSS BEI 10.000</span><span aria-hidden="true" class="road-track"><i id="road-progress"></i></span></span><button class="journey-shop" data-shop-open type="button" aria-label="Shop öffnen und Spiel pausieren">SHOP</button></div>
 <dialog class="shop-dialog" id="shop-dialog" aria-labelledby="shop-title" aria-describedby="shop-note">
-<header class="shop-head"><div><p>TASSEN TIAN / SPACE & SAFE 7.0</p><h2 id="shop-title">DEINE CREW. DEIN STYLE.</h2></div><div class="shop-wallet"><canvas id="shop-wallet-icon" width="24" height="28" aria-hidden="true"></canvas><span>DEINE PACKS<b id="shop-balance">00</b></span></div><button class="shop-close" id="shop-close" type="button" aria-label="Shop schließen">×</button></header>
-<nav class="shop-tabs" aria-label="Figuren filtern"><button type="button" data-shop-filter="all" aria-pressed="true">ALLE</button><button type="button" data-shop-filter="owned" aria-pressed="false">MEINE CREW</button><button type="button" data-shop-filter="locked" aria-pressed="false">FREISCHALTEN</button><span id="shop-owned-count">3 / 17 FREI</span></nav>
+<header class="shop-head"><div><p>TASSEN TIAN / PARTY BLOCKS 8.1</p><h2 id="shop-title">DEINE CREW. DEIN STYLE.</h2></div><div class="shop-wallet"><canvas id="shop-wallet-icon" width="24" height="28" aria-hidden="true"></canvas><span>DEINE PACKS<b id="shop-balance">00</b></span></div><button class="shop-close" id="shop-close" type="button" aria-label="Shop schließen">×</button></header>
+<nav class="shop-tabs" aria-label="Figuren filtern"><button type="button" data-shop-filter="all" aria-pressed="true">ALLE</button><button type="button" data-shop-filter="owned" aria-pressed="false">MEINE CREW</button><button type="button" data-shop-filter="locked" aria-pressed="false">FREISCHALTEN</button><span id="shop-owned-count">3 / 18 FREI</span></nav>
 <p class="shop-note" id="shop-note">Packs sammeln, Lieblingsfigur freischalten. Alles ohne echtes Geld.</p>
 <div class="shop-main"><div class="shop-grid" id="shop-grid" role="group" aria-label="Figuren"></div><aside class="shop-detail"><canvas id="shop-preview" width="176" height="180" aria-hidden="true"></canvas><p class="collection-tag" id="shop-collection">ORIGINAL CREW</p><h3 id="shop-name">TIAN</h3><p id="shop-description"></p><p class="detail-fair">ALLE STYLES. GLEICHE CHANCEN.<br>Keine Figur gibt Extra-Leben oder Spielvorteile.</p><button id="shop-confirm" class="shop-action" type="button">AUSRÜSTEN</button><p class="shop-feedback" id="shop-feedback" role="status" aria-live="polite"></p></aside></div>
 <footer class="shop-foot"><span>Nur gesammelte Bohnen-Packs. Kein echtes Geld.</span><span>Deine Sammlung bleibt in diesem Browser.</span></footer></dialog>
@@ -180,16 +206,17 @@
 <svg aria-hidden="true" class="pixel-heart is-empty" id="heart-extra" viewBox="0 0 13 12"><path d="M1 1h4v2h3V1h4v5h-2v2H8v2H6V8H4V6H1Z"></path></svg>
 <span id="life-caption">1 LEBEN</span>
 </div>
-<div class="pace-pill" id="pace-pill" title="Grundtempo steigt bis auf 3,5×. Blauer Stern gibt 5 Sekunden lang zusätzlich 1,75× Turbo."><span id="pace-label">TEMPO</span><strong id="pace-value">1.0×</strong><span class="turbo-count" hidden="" id="turbo-count"></span><span aria-hidden="true" class="turbo-track" hidden="" id="turbo-track"><i id="turbo-progress"></i></span></div>
+<div class="pace-pill" id="pace-pill" title="Ab 10.000 Punkten steigt das Tempo ohne feste Obergrenze. Blauer Stern gibt fünf Sekunden zusätzlich 1,75× Turbo."><span id="pace-label">TEMPO</span><strong id="pace-value">1.0×</strong><span class="turbo-count" hidden="" id="turbo-count"></span><span aria-hidden="true" class="turbo-track" hidden="" id="turbo-track"><i id="turbo-progress"></i></span></div>
 </div>
 <div class="overlay" id="overlay">
 <div class="overlay-panel" id="overlay-panel">
+<p class="start-version" id="start-version"><span class="start-version-dot"></span> WORLD TOUR / 8.1 <strong>NEW</strong></p>
 <p class="panel-eyebrow" id="panel-eyebrow">AUF DIE BOHNE, FERTIG ...</p>
 <h2 id="panel-title">BEREIT, TIAN?</h2>
 <p class="panel-copy" id="panel-copy">Spring über die Becher.<br/>Sammle Bohnen. Knack den Rekord.</p>
 <div class="result-stats" hidden="" id="result-stats"><div><span>DEINE PUNKTE</span><strong id="result-score">0</strong></div><div><span>DEIN REKORD</span><strong id="result-best">0</strong></div></div>
 <button class="primary-button" id="primary-button" type="button"><svg aria-hidden="true" viewBox="0 0 16 16"><path d="M4 2v12l10-6Z"></path></svg><span id="primary-label">LOS GEHT'S</span></button>
-<button class="overlay-shop" data-shop-open type="button">FIGUREN &amp; SHOP</button>
+<div class="start-menu-actions"><button class="overlay-shop" data-shop-open type="button">FIGUREN &amp; SHOP</button><button class="menu-news" id="menu-news" type="button">NEU IN 8.1 <span aria-hidden="true">↗</span></button></div>
 <p class="start-hint" id="start-hint"><span class="desktop-hint">oder drücke <kbd>LEERTASTE</kbd></span><span class="touch-hint">oder tippe ins Spielfeld</span></p>
 </div>
 </div>
@@ -202,14 +229,14 @@
  <button type="button" id="launch-skip">INTRO ÜBERSPRINGEN ↗</button>
 </section>
 <section class="vault-panel" id="vault-panel" aria-label="Tresor-Zahlenspiel" hidden>
- <div class="vault-head"><span class="vault-kicker">MINISPIEL / TRESOR-ALARM</span><span class="vault-timer" id="vault-timer">18.0 s</span></div>
+ <div class="vault-head"><span class="vault-kicker">MINISPIEL / TRESOR-ALARM</span><span class="vault-timer" id="vault-timer">18.1 s</span></div>
  <h2 id="vault-title">KNACK DEN CODE!</h2>
  <div class="vault-main"><div class="vault-art" aria-hidden="true"><div class="vault-door"><div class="vault-wheel"><i></i></div><span>TT</span></div><small>SICHERHEITSSTUFE 07</small></div>
   <div class="vault-puzzle"><span class="vault-sub">GEHEIMCODE</span><div class="vault-code" id="vault-code"><span>?</span><span>?</span><span>?</span></div>
    <div class="vault-reading"><div><span>ZIELZAHL</span><strong id="vault-target">4</strong></div><div><span>DREHENDE ZAHL</span><strong id="vault-digit">0</strong></div></div>
    <p class="vault-feedback" id="vault-feedback" role="status" aria-live="polite">Drücke STOPP bei der Zielzahl!</p></div></div>
- <div class="vault-controls"><button type="button" id="vault-stop">LEERTASTE / STOPP!</button><button type="button" id="vault-continue" hidden>WEITERLAUFEN ↗</button></div>
- <span class="vault-help" id="vault-help">DREI RICHTIGE ZIFFERN = 2 BOHNEN-PACKS · FALSCH = −2 SEK.</span>
+ <div class="vault-controls"><button type="button" id="vault-stop">LEERTASTE / STOPP!</button><button type="button" id="vault-continue" hidden>LEERTASTE / WEITER ↗</button></div>
+ <span class="vault-help" id="vault-help">DREI RICHTIGE ZIFFERN = 3 BOHNEN-PACKS · FALSCH = −2 SEK.</span>
 </section>
 <div class="speech-bubble" hidden="" id="speech-bubble">Mahlzeit Stern</div><section aria-label="Bosskampf gegen Herrn Schade" class="boss-panel" hidden="" id="boss-panel">
 <div class="boss-top"><span class="boss-kicker" id="boss-kicker">BOSS / 10.000 PUNKTE</span><span aria-label="Drei Bossphasen" class="phase-dots" id="phase-dots"><i></i><i></i><i></i></span></div>
@@ -233,6 +260,17 @@
 <button aria-label="Springen. Laenger halten fuer einen hoeheren Sprung." class="jump-button" id="jump-button" type="button"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 16 16 4M5 4h11v11"></path></svg><b id="jump-label">SPRINGEN</b><span id="jump-hint">Halten = höher</span></button>
 </div>
 </section>
+<dialog class="news-dialog" id="news-dialog" aria-labelledby="news-title">
+ <div class="news-heading"><div><span class="news-kicker">WORLD TOUR / UPDATE 8.1</span><h2 id="news-title">DIE PARTY GEHT LOS<span>!</span></h2><p>Alles neu in Version 8.1 – weiter mit deinem alten Spielstand.</p></div><button id="news-close" type="button" aria-label="Neuigkeiten schließen">×</button></div>
+ <div class="news-items">
+ <div class="news-item"><span class="news-icon">🎲</span><div><strong>PARTY BLOCKS DELUXE</strong><p>Eigene Pixel-Brettspielwelt mit Türmen, Wimpeln, Konfetti, Würfelfeldern und fünf interaktiven Plattformen.</p></div></div>
+ <div class="news-item"><span class="news-icon">⭐</span><div><strong>FÜNF BLOCKTYPEN</strong><p>Fragezeichen-Block (+50), Sternblock (+100), Regenbogen-Plattform, Sprungfeder und zerfallender Block. Du kannst darauf landen und weiterspringen.</p></div></div>
+ <div class="news-item"><span class="news-icon">👓</span><div><strong>SINA 2.0</strong><p>Riesige runde Brille, blonde Haare mit braunen Spitzen, gestreiftes Crop-Top und zwei pastellige Schnecken als Schuhe. Kati ohne Bart-Optik.</p></div></div>
+ <div class="news-item"><span class="news-icon">⚡</span><div><strong>10.000+ UND TRESOR</strong><p>Das Tempo steigt auch nach dem Boss weiter. Im Tresor gibt es drei Packs; mit Space kannst du danach direkt weiter.</p></div></div>
+ </div>
+ <div class="news-bottom"><span>8.1 • 18 FIGUREN • 9 WELTEN</span><button id="news-party" type="button">PARTY-WELT SPIELEN ↗</button></div>
+</dialog>
+<div class="party-features" aria-label="Neue Party-Blocktypen"><span>❔ FRAGEZEICHEN +50</span><span>⭐ STERN +100</span><span>🌈 REGENBOGEN</span><span>⬆ SPRUNGFEDER</span><span>💥 ZERFALL</span></div>
 <div class="pickup-guides" aria-label="Sammelhilfe">
 <div><canvas id="guide-pack" width="48" height="56" aria-hidden="true"></canvas><section><strong>BOHNEN-PACK</strong><p>Pack für den Shop + 75 Punkte.</p><span class="tag">GOLD / SAMMELWÄHRUNG</span></section></div>
 <div><canvas id="guide-larry" width="48" height="56" aria-hidden="true"></canvas><section><strong>LARRY, DEIN RETTER</strong><p>Ein Reserveleben. Auch beim Boss.</p><span class="tag">MINT / ZWEITE CHANCE</span></section></div>
@@ -244,16 +282,17 @@
 <p><b>Rakete:</b> Zuerst gibt es eine kurze Start-Cutscene. Danach HOCH, Leertaste, W oder ↑ halten zum Steigen. Loslassen zum Sinken, RUNTER, S oder ↓ zum schnellen Sinken. Hindernisse kommen oben und unten. Fliege durch die türkis markierten Lücken.</p>
 <p><b>Sammelitems:</b> Gold = Bohnen-Pack (1 Shop-Pack und 75 Laufpunkte), Mint = Larry (Reserveleben), Blau = Turbo-Stern. Einzelne Bohnen geben 25 Punkte und keine Shop-Packs. Im Weltraum schweben die Extras auf der Flugroute. In den Laufwelten musst du den Stern am Boden mitnehmen.</p>
 <p><b>Shop:</b> FIGUREN &amp; SHOP öffnet die Sammlung. Figur anklicken, dann gezielt freischalten oder ausrüsten. Der Preis wird nur einmal abgezogen. Ein laufendes Spiel wird beim Öffnen pausiert; kaufen und wechseln kannst du vor oder nach der Runde.</p>
-</div><div><h3>Space &amp; Safe / 7.0</h3>
-<p><b>17 Figuren:</b> Jetzt mit Kati (braune Haare) und Konrad (Schnauzer und kurze braune Haare), plus Lenny im Streetwear-Look. Alle haben dieselben Trefferzonen im jeweiligen Spielmodus. Auch spielbarer Larry braucht das Larry-Extra für ein Reserveleben.</p>
+</div><div><h3>Party Edition / 8.1</h3>
+<p><b>18 Figuren:</b> Kati und Konrad stehen jetzt weiter oben im Shop, Kati hat ein überarbeitetes Gesicht und neu dabei ist Sina mit großem Brillen-Look, Ombre-Haaren und Schnecken-Schuhen. Alle Figuren bleiben fair spielbar.</p>
 <p><b>KIT / Pixel-Lab:</b> Eine fiktive Laborwelt mit Glasgeräten, Mikroskopen und brennenden Cartoon-Figuren. Keine Darstellung eines realen Vorfalls und kein offizielles KIT-Spiel.</p>
-<p><b>Herr Schade:</b> Bei 10.000 Punkten kommen drei Klickphasen: 16, 20 und 24 Treffer in jeweils sechs Sekunden. Sieg: 1.000 Punkte. Larry rettet eine verlorene Phase. BOSS TRAINIEREN und TRESOR ÜBEN verändern weder Rekord noch Packs. Pause und Tabwechsel halten die Zeit an.</p>
-<p><b>Tresor-Welt:</b> Drücke im Tresor bei der angezeigten Zielzahl die Leertaste oder den STOPP-Knopf. Drei richtige Ziffern öffnen den Tresor und schenken dir 2 Bohnen-Packs (im kostenlosen Übungsmodus keine Belohnung). Falsche Versuche kosten 2 Sekunden. Die Runde läuft nach dem Minispiel weiter.</p><p><b>Schwierigkeit:</b> Das Grundtempo steigt bis 3,5×, dazu kommt optional Stern-Turbo. Larry erscheint mit steigenden Punkten in immer größeren Abständen.</p>
+<p><b>Party-Welt:</b> Im neuen Brettspiel-Level gibt es fünf schwebende Plattformen zum Draufspringen: Fragezeichen (+50 Punkte), Stern (+100 Punkte), Regenbogen, Sprungfeder und zerfallende Blöcke. Drücke PARTY-WELT STARTEN über dem Spielfeld, um direkt loszulegen.</p>
+<p><b>Neu in 8.1:</b> Sina hat jetzt eine deutlich detailliertere Spielfigur. Katis Gesicht wurde korrigiert. Der Tresor lässt sich nach dem Ergebnis mit Space verlassen und schenkt bei Erfolg 3 Packs. Ab 10.000 Punkten wird es immer schneller.</p>
+<p><b>Tresor-Welt:</b> Leertaste oder STOPP bei der Zielzahl, drei Ziffern korrekt stoppen und 3 Bohnen-Packs erhalten (Übung ohne Belohnung). Danach erneut Leertaste oder WEITER drücken. Fehlversuche kosten 2 Sekunden.</p><p><b>Schwierigkeit:</b> Das Grundtempo steigt zunächst bis 3,5× und nach dem 10.000er-Boss weiter ohne feste Obergrenze. Dazu gibt es den Stern-Turbo. Larry wird mit wachsendem Punktestand seltener.</p>
 <p><b>Speicherung:</b> Rekord, Packs, gekaufte Figuren und Einstellungen bleiben im selben Browser auf derselben Website. Bestehende Spielstände der 5.1 werden weiterverwendet. Kein Konto, keine geräteübergreifende Synchronisierung. Bei blockiertem Browserspeicher bleibt der Fortschritt nur bis zum Schließen. Browserdaten zum Aktualisieren nicht löschen.</p>
 <button class="text-button" id="reset-best" type="button">Nur den lokalen Rekord zurücksetzen</button></div></div>
 </details>
 </main>
-<footer class="site-footer"><span>VON DER SKIZZE INS SPIEL.</span><span>TASSEN TIAN <span aria-hidden="true">/</span> <span class="footer-version">WORLD TOUR 7.0</span></span></footer>
+<footer class="site-footer"><span>VON DER SKIZZE INS SPIEL.</span><span>TASSEN TIAN <span aria-hidden="true">/</span> <span class="footer-version">WORLD TOUR 8.1</span></span></footer>
 </div>
 <div aria-atomic="true" aria-live="polite" class="sr-only" id="announcer"></div>
 <noscript><div class="noscript">Zum Spielen muss JavaScript im Browser aktiviert sein.</div></noscript>
@@ -262,7 +301,7 @@
 (() => {
  'use strict';
  // All timings use seconds. No dependencies, network requests or build step.
- const CONFIG=Object.freeze({startSpeed:270,maxSpeed:945,acceleration:22,jumpVelocity:655,gravity:2250,heldGravity:1320,holdTime:.20,beanPoints:25,distancePerPoint:16,firstObstacleDelay:1,starDuration:5,starMultiplier:1.75,rescueInvulnerability:2,firstLarryAt:5,firstStarAt:9,firstPackAt:7,bossScore:10000,bossBonus:1000,storageKey:'tassen-tian-v1',version:'7.0.0',spaceLift:1700,spaceGravity:600,spaceDownForce:1000,spaceMaxUp:-360,spaceMaxDown:360,spaceCeiling:168,spaceSpeedFactor:.84});
+ const CONFIG=Object.freeze({startSpeed:270,maxSpeed:945,acceleration:22,jumpVelocity:655,gravity:2250,heldGravity:1320,holdTime:.20,beanPoints:25,distancePerPoint:16,firstObstacleDelay:1,starDuration:5,starMultiplier:1.75,rescueInvulnerability:2,firstLarryAt:5,firstStarAt:9,firstPackAt:7,bossScore:10000,bossBonus:1000,storageKey:'tassen-tian-v1',version:'8.1.0',spaceLift:1700,spaceGravity:600,spaceDownForce:1000,spaceMaxUp:-360,spaceMaxDown:360,spaceCeiling:168,spaceSpeedFactor:.84});
  const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d',{alpha:false});
  if(!ctx){$('panel-title').textContent='HOPPLA!';$('panel-copy').textContent='Dein Browser kann das Spielfeld nicht anzeigen.';$('primary-button').disabled=true;return;}
  const stage=$('stage'),shell=$('game-shell'),overlay=$('overlay');
@@ -655,31 +694,79 @@
  const rocketArt=flightRocketArt();
  const poses=['idle','jump','over','run0','run1','run2','run3'];
 
- // Kati and Konrad: hand-drawn human sprites, independent from the mug characters.
+ // Kati, Konrad and Sina: hand-drawn human sprites, independent from the mug characters.
  function newHumanSprite(pose,who){
   const out=document.createElement('canvas');out.width=44;out.height=58;
   const c=out.getContext('2d'),r=(x,y,w,h,col)=>rect(c,x,y,w,h,col),ink='#242d35';
-  const kati=who==='kati',n=pose.startsWith('run')?Number(pose.slice(3)):0,jump=pose==='jump',skin='#f2c49b',skinShade='#cf9977';
-  const clothes=kati?'#8c749b':'#5b7c72',accent=kati?'#c0a6d0':'#9bc1b0',trouser=kati?'#374856':'#394955';
-  // Sneakers and alternating legs.
+  const kati=who==='kati',sina=who==='sina',konrad=who==='konrad',n=pose.startsWith('run')?Number(pose.slice(3)):0,jump=pose==='jump';
+  const skin='#f2c49b',skinShade='#cf9977';
+  const clothes=sina?'#243d86':kati?'#8b78a6':'#5b7c72',accent=sina?'#f7f8ff':kati?'#c9b4dd':'#9bc1b0',trouser=sina?'#8fc0f2':kati?'#374856':'#394955';
   for(let i=0;i<2;i++){
    const yy=jump?42+i:((n+i)%2?42:44),xx=i?26:13;
-   r(xx,yy,9,10,ink);r(xx+1,yy+1,7,8,trouser);r(xx-3,yy+8,14,4,ink);r(xx-2,yy+9,12,2,'#ebeee3');
+   r(xx,yy,9,10,ink);r(xx+1,yy+1,7,8,trouser);
+   if(sina){r(xx-4,yy+8,16,5,ink);r(xx-3,yy+8,14,4,i?'#c4e8f5':'#e8c9ef');r(xx,yy+9,7,2,i?'#f3e28e':'#b6d8a5');r(xx+2,yy+10,2,1,ink);r(xx+5,yy+11,1,1,ink);}else{r(xx-3,yy+8,14,4,ink);r(xx-2,yy+9,12,2,'#ebeee3');}
   }
-  r(10,25,27,19,ink);r(12,26,23,17,clothes);r(14,27,19,5,accent);r(19,31,9,8,kati?'#e0d0e6':'#334f49');
+  r(10,25,27,19,ink);r(12,26,23,17,clothes);
+  if(sina){for(const yy of [28,32,36])r(13,yy,21,2,yy===32?'#243d86':'#f7f8ff');r(15,27,17,2,'#243d86');r(16,24,15,2,skin);}else{r(14,27,19,5,accent);r(19,31,9,8,kati?'#e0d0e6':'#334f49');}
   r(6,27,7,13,ink);r(7,28,5,10,clothes);r(7,39,6,4,skin);
   r(35,27,6,14,ink);r(36,28,4,11,clothes);r(36,39,5,4,skin);
   r(19,22,10,6,ink);r(21,22,6,5,skin);
-  // Thick hair outline with a distinct female shoulder-length silhouette or short male cut.
-  if(kati){r(10,4,27,29,ink);r(12,6,23,25,'#533725');r(10,12,6,24,'#6c4530');r(32,11,5,24,'#6c4530');r(8,26,8,9,'#775038');r(32,26,7,8,'#75472e');}
+  if(kati){r(10,5,27,27,ink);r(12,7,23,23,'#543825');r(10,11,6,24,'#6a4430');r(31,10,5,24,'#6a4430');r(8,24,8,11,'#76503c');r(31,25,8,10,'#76503c');}
+  else if(sina){r(10,5,28,28,ink);r(12,7,24,10,'#f0d584');r(12,16,24,9,'#e8cc7a');r(12,24,24,7,'#9f7253');r(10,14,5,18,'#e9cf82');r(32,14,5,18,'#e9cf82');r(11,25,5,8,'#9c7154');r(31,25,5,8,'#9c7154');}
   else {r(11,5,26,20,ink);r(12,4,24,10,'#533824');r(12,7,24,10,'#6a4730');r(15,4,14,3,'#523823');r(32,9,4,8,'#433024');}
   r(13,12,22,14,ink);r(15,13,18,12,skin);r(16,14,16,9,'#f7cca8');r(12,17,3,6,skinShade);r(34,17,3,6,skinShade);
-  // Faces looking to the right. Konrad wears a very clear dark brown moustache.
-  r(19,18,3,2,ink);r(29,18,3,2,ink);r(25,20,2,2,skinShade);
-  if(kati){r(21,25,9,1,'#995f60');r(15,11,4,10,'#65412c');r(31,11,4,8,'#65412c');r(16,9,5,3,'#895c3b');r(26,8,7,3,'#895c3b');r(14,20,2,7,'#6c4530');r(35,19,3,12,'#6c4530');}
-  else {r(20,23,12,3,'#563825');r(19,22,6,2,'#563825');r(26,22,7,2,'#563825');r(24,25,3,1,'#ae7157');r(14,12,18,3,'#65432f');r(14,15,3,3,'#4b3529');}
+  if(sina){r(17,16,8,8,ink);r(25,16,8,8,ink);r(18,17,6,6,'#f5f7ff');r(26,17,6,6,'#f5f7ff');r(23,19,3,2,ink);r(19,19,2,2,ink);r(28,19,2,2,ink);r(24,24,3,1,'#b86f74');}
+  else{r(19,18,3,2,ink);r(29,18,3,2,ink);r(25,20,2,2,skinShade);if(kati){r(22,24,7,1,'#b56f74');r(24,25,3,1,'#d8898f');r(16,9,5,3,'#8a5e3d');r(26,8,7,3,'#8a5e3d');r(10,27,3,5,'#76503c');r(35,29,3,4,'#76503c');}else{r(20,23,12,3,'#563825');r(19,22,6,2,'#563825');r(26,22,7,2,'#563825');r(24,25,3,1,'#ae7157');r(14,12,18,3,'#65432f');r(14,15,3,3,'#4b3529');}}
   if(pose==='over'){r(19,18,3,1,ink);r(29,18,3,1,ink);r(25,28,5,2,ink);}
   if(jump){r(7,30,5,5,accent);r(36,28,5,5,accent);}
+  // Kati: face and neck remain skin-toned; the dark hair falls beside, never below, her mouth.
+  if(kati){r(16,25,17,3,skin);r(19,28,10,3,skin);r(17,31,15,4,clothes);r(20,25,10,1,'#ba7180');}
+  return out;
+ }
+
+
+ function sinaSprite(pose){
+  const out=document.createElement('canvas');out.width=54;out.height=70;
+  const c=out.getContext('2d'),r=(x,y,w,h,color)=>rect(c,x,y,w,h,color),ink='#24303d',skin='#f5c6a1',skinLight='#ffdab9';
+  const frame=pose.startsWith('run')?Number(pose.slice(3)):0,jump=pose==='jump',over=pose==='over',swing=frame%2?2:-2;
+  const disk=(x,y,rad,col)=>{for(let iy=-rad;iy<=rad;iy++)for(let ix=-rad;ix<=rad;ix++)if(ix*ix+iy*iy<=rad*rad)r(x+ix,y+iy,1,1,col);};
+  // Wide pale blue pants, different legs for run and jump.
+  for(let i=0;i<2;i++){const x=i?31:13,off=jump?(i?0:-1):(frame%2===i?-3:0),legY=50+off;
+   r(x-1,legY,12,13,ink);r(x,legY+1,10,11,'#9bcdf1');r(x+2,legY+1,3,7,'#d6ecfa');r(x+8,legY+3,1,9,'#619dc8');
+  }
+  // Gary-inspired tiny pastel snail shoes: two shells, spiral, stalk eyes, no ordinary sneakers.
+  for(let i=0;i<2;i++){const x=i?29:9,dy=jump?(i?0:-2):(frame%2===i?-2:0),y=61+dy;
+   const body=i?'#c5e9da':'#a9e3e9',shell=i?'#e6c1f2':'#f3bed6',spiral=i?'#ac8ec9':'#d787af';
+   r(x,y+3,19,6,ink);r(x+1,y+3,17,5,body);r(x-1,y+7,21,2,ink);r(x+2,y+8,17,1,'#f8f2e2');
+   r(x+10,y-1,9,9,ink);r(x+11,y,7,7,shell);r(x+12,y+1,5,5,'#fff1e7');r(x+13,y+2,4,3,shell);r(x+14,y+2,2,2,spiral);
+   r(x+3,y,2,4,body);r(x+7,y-1,2,5,body);r(x+2,y-1,4,3,'#fff9e7');r(x+6,y-2,4,3,'#fff9e7');r(x+4,y,1,1,ink);r(x+8,y-1,1,1,ink);
+  }
+  // Waist/hip and striped long sleeve cropped shirt.
+  r(12,47,30,8,ink);r(14,47,26,7,'#a0cef0');r(14,48,26,2,'#cae7fc');r(25,50,3,2,'#6d9fc3');
+  r(17,44,20,5,skin);r(19,45,16,3,skinLight);r(26,46,3,1,'#d9a480');
+  r(13,32,29,15,ink);r(15,33,25,13,'#243b80');
+  for(const yy of [34,38,42])r(15,yy,25,2,'#f5f4f0');
+  // Sleeves swing while running.
+  r(5,33+swing/2,10,17,ink);r(6,34+swing/2,8,15,'#263e88');
+  r(40,32-swing/2,10,17,ink);r(41,33-swing/2,8,15,'#263e88');
+  for(const yy of [37,43]){r(6,yy+swing/2,8,2,'#f5f4f0');r(41,yy-swing/2,8,2,'#f5f4f0');}
+  r(7,48+swing/2,6,4,skin);r(42,47-swing/2,6,4,skin);
+  r(23,29,9,5,ink);r(24,29,7,5,skin);
+  // Hair curtain behind the face: platinum/gold at crown, chestnut brown at ends.
+  r(11,5,34,31,ink);r(13,4,30,30,'#f1cd77');r(11,14,8,24,'#eccc80');r(38,14,8,24,'#e4bd74');
+  r(12,27,7,10,'#af8459');r(37,26,8,12,'#a87653');r(12,33,8,6,'#825941');r(37,32,8,7,'#825941');
+  r(16,6,23,8,'#ffe695');r(14,11,27,7,'#efce7b');r(17,14,22,4,'#dfb872');
+  // Rosy face, subtle nose/lips, NO moustache.
+  r(18,15,21,18,ink);r(19,16,19,16,skin);r(21,17,15,13,skinLight);
+  r(19,13,10,4,'#f9dc92');r(29,12,10,4,'#f2d281');r(16,18,3,11,'#c99a68');
+  // Oversized ROUND black frames and reflective pastel lenses.
+  disk(24,23,8,ink);disk(36,23,8,ink);disk(24,23,5,'#d2eafa');disk(36,23,5,'#d2eafa');
+  disk(24,23,2,'#323d53');disk(36,23,2,'#323d53');r(21,19,3,2,'#ffffff');r(33,19,3,2,'#ffffff');
+  r(30,21,1,3,ink);r(17,21,2,3,ink);r(43,21,2,3,ink);
+  r(30,28,2,2,'#daa684');r(26,31,8,1,'#ad6578');r(28,32,5,1,'#e38f96');
+  if(over){r(23,23,3,1,ink);r(35,23,3,1,ink);r(29,31,5,2,'#9c4d67');}
+  // Animated hair highlights and a light blue waistband.
+  r(13,9,4,9,'#fff0ac');r(40,10,3,11,'#ffe79b');r(17,52,20,2,'#d6effc');
   return out;
  }
 
@@ -687,6 +774,9 @@
   tian:{name:"TIAN",brief:"Der Klassiker",description:"Die originale Tasse. Wuschelhaare, Sonnenbrille, voller Kaffee.",collection:"ORIGINAL CREW",price:0,sprites:mugs,width:44,height:46,offset:0},
   nico:{name:"NICO",brief:"BMX & Bunnyhops",description:"Nico tritt in die Pedale. Die ganze Runde auf dem BMX.",collection:"ORIGINAL CREW",price:0,sprites:nicos,width:58,height:54,offset:-18},
   astro:{name:"ASTRO-TIAN",brief:"Bereit zum Abheben",description:"Helm auf, Kaffee rein. Im All wartet eine neue Rakete.",collection:"ORIGINAL CREW",price:0,sprites:Object.fromEntries(poses.map(p=>[p,astroSprite(p)])),width:44,height:50,offset:0},
+  kati:{name:"KATI",brief:"Braune Haare & Street-Style",description:"Kati mit schulterlangen braunen Haaren, überarbeitetem Gesicht und lässigem Street-Style.",collection:"NEU / FRIENDS",price:8,sprites:Object.fromEntries(poses.map(p=>[p,newHumanSprite(p,'kati')])),width:44,height:58,offset:0},
+  konrad:{name:"KONRAD",brief:"Schnauzer & kurzer Haarschnitt",description:"Konrad mit kurzem braunem Haar, markantem Schnauzer, Hoodie und Sneakers.",collection:"NEU / FRIENDS",price:9,sprites:Object.fromEntries(poses.map(p=>[p,newHumanSprite(p,'konrad')])),width:44,height:58,offset:0},
+  sina:{name:"SINA",brief:"Ombre, Brille & Schnecken",description:"Sina mit blondem Haar und braunen Spitzen, riesiger runder schwarzer Brille, hellblauer Hose, bauchfreiem dunkelblau-weiß gestreiftem Langarmshirt und zwei pastelligen Schnecken-Schuhen.",collection:"NEU / FRIENDS",price:10,sprites:Object.fromEntries(poses.map(p=>[p,sinaSprite(p)])),width:54,height:70,offset:-5},
   lenny:{name:"LENNY STREET",brief:"Streetwear 2.0",description:"Komplett neu: Buzzcut, Pufferweste, Crossbody-Bag, weite Cargos und Chunky-Sneaker.",collection:"CREW / REDESIGN",price:6,sprites:Object.fromEntries(poses.map(p=>[p,streetLennySprite(p)])),width:44,height:56,offset:0},
   cap:{name:"CAP-TIAN",brief:"Rote Cap & Rush",description:"Die rote Cap sitzt. Jetzt fehlt nur noch ein guter Run.",collection:"TIAN COLLECTION",price:4,sprites:Object.fromEntries(poses.map(p=>[p,capTianSprite(p)])),width:44,height:46,offset:0},
   beach:{name:"BEACH-TIAN",brief:"Sommermodus",description:"Sonnenbrille, Sommerfarben und Kaffee auf Eis.",collection:"TIAN COLLECTION",price:4,sprites:Object.fromEntries(poses.map(p=>[p,beachTianSprite(p)])),width:44,height:46,offset:0},
@@ -698,8 +788,6 @@
   rescue:{name:"FEUERWEHR-TIAN",brief:"Helm & Einsatzjacke",description:"Helm, dunkle Einsatzjacke und helle Reflexstreifen.",collection:"NEU / SPECIAL BREW",price:12,sprites:Object.fromEntries(poses.map(p=>[p,newTianSprite(p,'rescue')])),width:44,height:46,offset:0},
   matcha:{name:"MATCHA-TIAN",brief:"Ganz in Gruen",description:"Gruene Keramik, Schaumkrone und ein kleiner Bambusbesen.",collection:"NEU / SPECIAL BREW",price:8,sprites:Object.fromEntries(poses.map(p=>[p,newTianSprite(p,'matcha')])),width:44,height:46,offset:0},
   robot:{name:"ROBO-TIAN",brief:"Kaffee trifft Technik",description:"Metall-Look, leuchtende Augen und eine kleine Antenne.",collection:"NEU / FUTURE CREW",price:14,sprites:Object.fromEntries(poses.map(p=>[p,newTianSprite(p,'robot')])),width:44,height:46,offset:0},
-  kati:{name:"KATI",brief:"Braune Haare & Street-Style",description:"Kati mit schulterlangen braunen Haaren, lässigem Outfit und eigenen Laufschritten.",collection:"NEU / FRIENDS",price:8,sprites:Object.fromEntries(poses.map(p=>[p,newHumanSprite(p,'kati')])),width:44,height:58,offset:0},
-  konrad:{name:"KONRAD",brief:"Schnauzer & kurzer Haarschnitt",description:"Konrad mit kurzem braunem Haar, markantem Schnauzer, Hoodie und Sneakers.",collection:"NEU / FRIENDS",price:9,sprites:Object.fromEntries(poses.map(p=>[p,newHumanSprite(p,'konrad')])),width:44,height:58,offset:0},
   larry:{name:"LARRY",brief:"Skelett auf Tour",description:"Das kleine Skelett als spielbare Figur. Extra-Leben gibt nur das mintfarbene Sammelitem.",collection:"NEU / FUTURE CREW",price:10,sprites:Object.fromEntries(poses.map(p=>[p,larryHeroSprite(p)])),width:44,height:50,offset:0},
  });
  function schadeSprite(phase=0,hurt=false){
@@ -748,6 +836,12 @@
   } else if(world==='kit'){
    if(!tall){r(5,10,14,23,ink);r(6,11,12,21,'#eef2f6');r(9,5,8,6,ink);r(10,6,6,4,'#99c6d8');r(12,14,2,11,'#7fa1ae');r(7,28,10,3,'#d77c58');box(6,11,12,21);}
    else {r(8,4,8,26,ink);r(9,5,6,24,'#b6d7e2');r(6,22,12,9,'#f0b460');r(5,31,14,4,ink);r(7,16,2,5,'#e46a53');r(15,16,2,5,'#e46a53');r(10,9,4,5,'#ffffff');box(8,5,8,25);box(6,22,12,9);}
+  } else if(world==='party'){
+   if(!tall){
+    r(3,14,18,18,ink);r(4,15,16,16,'#f0b447');r(5,16,14,14,'#ffda73');r(7,20,10,6,'#f3b640');r(10,18,4,2,'#fff4c6');r(10,26,4,2,'#fff4c6');r(8,22,2,2,'#fff4c6');r(14,22,2,2,'#fff4c6');r(3,32,18,4,'#c07b3a');box(4,15,16,17);
+   }else{
+    r(2,22,20,10,ink);r(3,23,18,8,'#bf7d57');r(4,24,16,2,'#e8b28b');r(2,10,20,12,ink);r(3,11,18,10,'#db8c5f');r(4,12,16,2,'#f1b783');r(6,15,4,2,'#8c5137');r(12,15,4,2,'#8c5137');r(8,26,4,2,'#8c5137');r(14,26,4,2,'#8c5137');box(3,11,18,10);box(3,23,18,8);
+   }
   } else if(world==='vault'){
    if(!tall){
     // Stacked gold bars, low and wide.
@@ -765,7 +859,7 @@
   }
   return {image:out,boxes};
  }
- const obstacleArt=Object.fromEntries(['cafe','beach','city','space','snow','lava','kit','vault'].map(w=>[w,{matcha:worldObstacleArt(w,'matcha'),iced:worldObstacleArt(w,'iced')} ]));
+ const obstacleArt=Object.fromEntries(['cafe','beach','city','space','snow','lava','kit','party','vault'].map(w=>[w,{matcha:worldObstacleArt(w,'matcha'),iced:worldObstacleArt(w,'iced')} ]));
  obstacleArt.kit.fireperson=labFireSprites[0];
  // --- Session, persistence and worlds ----------------------------------------
  const DEFAULT_UNLOCKED=Object.freeze(['tian','nico','astro']);
@@ -782,6 +876,7 @@
   space:{name:'SPACE SHIFT',accent:'#99abf1',sky:'#1c253c',grid:'#253149',cloud:'#445777',cloudEdge:'#7392b3',sun:'#82c7e9',hill:'#424963',hillBack:'#343950',ground:'#505875',soil:'#404862',line:'#a3b9de',detail:'#7b8eaf',night:1,root:62},
   snow:{name:'WINTERWALD',accent:'#70a1ae',sky:'#d9eaf0',grid:'#e3eff3',cloud:'#fcffff',cloudEdge:'#bacfd8',sun:'#efdcac',hill:'#91b3b7',hillBack:'#bdcdd7',ground:'#eaf5f4',soil:'#c2d8df',line:'#7098a5',detail:'#b3ccd5',night:0,root:67},
   lava:{name:'VULKANLAUF',accent:'#d79267',sky:'#493d4d',grid:'#524354',cloud:'#745567',cloudEdge:'#886370',sun:'#d79767',hill:'#72616d',hillBack:'#615463',ground:'#665565',soil:'#584954',line:'#e5aa78',detail:'#a28083',night:1,root:55},
+  party:{name:'PARTY BLOCKS',accent:'#f0b057',sky:'#9fd4ff',grid:'#bfe4ff',cloud:'#ffffff',cloudEdge:'#7ab7f2',sun:'#ffe57a',hill:'#7fd87f',hillBack:'#b7f0a7',ground:'#84cf72',soil:'#5da85f',line:'#3d6e4d',detail:'#f4c05a',night:0,root:69},
   vault:{name:'TRESOR / GOLD-RUN',accent:'#e2bd75',sky:'#26363e',grid:'#344d50',cloud:'#73847f',cloudEdge:'#acbdaf',sun:'#f1d590',hill:'#829185',hillBack:'#536a67',ground:'#839189',soil:'#65766f',line:'#d9c58a',detail:'#b6a275',night:1,root:49},
   kit:{name:'KIT / PIXEL-LAB',accent:'#4e8b7b',sky:'#e1eae0',grid:'#d1dfd4',cloud:'#f4f5e7',cloudEdge:'#90b3a7',sun:'#d8cf9b',hill:'#93b3a8',hillBack:'#bad0c2',ground:'#ccd9ca',soil:'#a8c3b4',line:'#5c8178',detail:'#8fafa0',night:0,root:64}
  });
@@ -789,7 +884,7 @@
  const PALETTE_KEYS=['sky','grid','cloud','cloudEdge','sun','hill','hillBack','ground','soil','line','detail'];
  let W=960,H=360,ground=302,state='ready',resumeState='running',elapsed=0,distance=0,score=0,collected=0,speed=270;
  let ambient=0,gameTime=0,spawnIn=1,spawnCount=0,lastMilestone=0,bonusPoints=0,extraLife=false,invulnerable=0,turboLeft=0,rescues=0;
- let obstacles=[],beans=[],pickups=[],particles=[],floaters=[];
+ let obstacles=[],platforms=[],beans=[],pickups=[],particles=[],floaters=[];
  let nextLarryAt=5,nextStarAt=9,nextPackAt=7,speechLeft=0;
  let currentWorld='cafe',worldBag=[],worldElapsed=0,nextWorldAt=26,worldChanges=0,worldBlend=1,worldFrom=null;
  let jumpBuffer=0,held=false,pointer=null,downHeld=false,downPointer=null,dustIn=0,bestAtStart=best,gameOverAt=-Infinity,lastHUD='',lastCrew='',lastBossHUD='',toastTimeout=0,toastHold=0;
@@ -818,7 +913,7 @@
  // Space transition: time and world motion stop for a short pixel-art launch.
  function beginLaunch(){
   clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;clearHeld();state='launch';resumeState='launch';launchElapsed=0;launchLeft=reducedMotion.matches?2.2:3.5;launchSeen++;
-  obstacles=[];beans=[];pickups=[];spawnIn=2;invulnerable=Math.max(invulnerable,2);resetMusic();
+  obstacles=[];platforms=[];beans=[];pickups=[];spawnIn=2;invulnerable=Math.max(invulnerable,2);resetMusic();
   setOverlay();updateHUD(true);announce('Raketenstart! Eine kurze Cutscene. Danach steuerst du die Rakete hoch und runter.');
  }
  function finishLaunch(){
@@ -830,11 +925,11 @@
  function updateLaunch(dt){launchElapsed+=dt;launchLeft=Math.max(0,launchLeft-dt);if(launchLeft===0)finishLaunch();}
 
  // Real three-digit vault puzzle: each reel can be stopped by Space, Enter or tap.
- // Real-run success grants exactly two permanent Packs. Practice does not give rewards.
+ // Real-run success grants three permanent Packs. Practice does not give rewards.
  function beginVault(practice=false){
   if(practice&&sessionLocked())return false;
   if(practice){resetRun();currentWorld='vault';worldBlend=1;}
-  clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;clearHeld();state='vault';resumeState='vault';obstacles=[];beans=[];pickups=[];spawnIn=1.8;
+  clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;clearHeld();state='vault';resumeState='vault';obstacles=[];platforms=[];beans=[];pickups=[];spawnIn=1.8;
   Object.assign(player,{y:0,vy:0,grounded:true,jumpTime:0});invulnerable=Math.max(invulnerable,2);
   vault={practice,mode:'play',code:Array.from({length:3},()=>Math.floor(rand(0,10))),solved:[],index:0,spin:0,offset:Math.floor(rand(0,10)),left:19,wrong:0,current:0,feedback:'STOPP bei der angezeigten Zielzahl!',feedbackLeft:0};
   vault.current=vault.offset;vaultCodeStamp='';
@@ -845,7 +940,7 @@
  function endVault(win){
   if(!vault||state!=='vault'||vault.mode!=='play')return;
   vault.mode=win?'won':'failed';vault.feedback=win?'TRESOR GEKNACKT!':'CODE NICHT GESCHAFFT';vault.feedbackLeft=10;
-  if(win){vaultWins++;sfx('win');if(!vault.practice){packBalance=clamp(packBalance+2,0,999);bonusPoints+=300;recalcScore();persist();}announce(win?'Tresor geöffnet! '+(vault.practice?'Übung geschafft.':'Zwei Bohnen-Packs und 300 Punkte gewonnen.'):'');}
+  if(win){vaultWins++;sfx('win');if(!vault.practice){packBalance=clamp(packBalance+3,0,999);bonusPoints+=300;recalcScore();persist();}announce(win?'Tresor geöffnet! '+(vault.practice?'Übung geschafft.':'Drei Bohnen-Packs und 300 Punkte gewonnen.'):'');}
   else{sfx('over');announce('Tresor nicht geöffnet. Du kannst trotzdem weiterlaufen.');}
   updateHUD(true);
  }
@@ -880,7 +975,7 @@
   const panel=$('vault-panel');panel.hidden=!isVault();if(!isVault()||!vault)return;
   const v=vault,playing=v.mode==='play';panel.classList.toggle('is-victory',v.mode==='won');panel.classList.toggle('is-failure',v.mode==='failed');
   $('vault-title').textContent=playing?'KNACK DEN CODE!':v.mode==='won'?'TRESOR OFFEN!':'TRESOR VERRIEGELT';
-  $('vault-timer').textContent=playing?v.left.toFixed(1)+' s':v.mode==='won'?'+2 PACKS':'ZEIT ABGELAUFEN';
+  $('vault-timer').textContent=playing?v.left.toFixed(1)+' s':v.mode==='won'?'+3 PACKS':'ZEIT ABGELAUFEN';
   $('vault-timer').style.color=v.left<5&&playing?'#ff9e84':'#f5d58b';
   const codeStamp=v.solved.join('')+':'+v.mode+':'+v.index;
   if(codeStamp!==vaultCodeStamp){vaultCodeStamp=codeStamp;$('vault-code').replaceChildren();for(let i=0;i<3;i++){
@@ -888,11 +983,11 @@
    if(i<v.solved.length)el.classList.add('solved');if(i===v.index&&playing)el.classList.add('active');$('vault-code').appendChild(el);
   }}
   $('vault-target').textContent=playing?v.code[v.index]:v.code.join('');$('vault-digit').textContent=playing?String(v.current):v.mode==='won'?'✓':'×';
-  $('vault-feedback').textContent=playing?(v.feedbackLeft>0?v.feedback:'ZIEL TREFFEN – SPACE DRÜCKEN'):v.mode==='won'?(v.practice?'TRAINING GESCHAFFT – OHNE BELOHNUNG':'+2 PACKS UND +300 PUNKTE'):'DIE RUNDE GEHT TROTZDEM WEITER';
+  $('vault-feedback').textContent=playing?(v.feedbackLeft>0?v.feedback:'ZIEL TREFFEN – SPACE DRÜCKEN'):v.mode==='won'?(v.practice?'TRAINING GESCHAFFT – OHNE BELOHNUNG':'+3 PACKS UND +300 PUNKTE'):'DIE RUNDE GEHT TROTZDEM WEITER';
   $('vault-feedback').classList.toggle('is-error',v.feedback.startsWith('FALSCH')||v.mode==='failed');
-  $('vault-help').textContent=v.practice?'ÜBUNGSMODUS / KEINE PACKS / KEINE PUNKTE':'3 TREFFER = +2 PACKS · FALSCH = −2 SEK.';
+  $('vault-help').textContent=v.practice?'ÜBUNGSMODUS / KEINE PACKS / KEINE PUNKTE':'3 TREFFER = +3 PACKS · FALSCH = −2 SEK.';
   $('vault-stop').hidden=!playing;$('vault-continue').hidden=playing;
-  $('vault-continue').textContent=v.practice?'ZURÜCK ZUM SPIELMENÜ ↗':'WEITERLAUFEN ↗';
+  $('vault-continue').textContent=v.practice?'LEERTASTE / ZURÜCK ↗':'LEERTASTE / WEITER ↗';
  }
  function drawLaunchScene(){
   const c=$('launch-scene'),g=c.getContext('2d');if(!g)return;g.imageSmoothingEnabled=false;
@@ -918,18 +1013,18 @@
 
  function changeWorld(id=nextWorld()){
   if(!hasOwn(WORLDS,id)||id===currentWorld)return false;
-  const changesMovement=currentWorld==='space'||id==='space'||id==='vault';
+  const changesMovement=currentWorld==='space'||id==='space'||id==='vault'||currentWorld==='party'||id==='party';
   flightCount=0;lastFlightAltitude=128;
   worldFrom=paletteNow();currentWorld=id;worldBlend=0;worldElapsed=0;nextWorldAt=rand(22,30);worldChanges++;resetMusic();
   if(changesMovement&&['running','paused'].includes(state)){
-   obstacles=[];beans=[];pickups=[];spawnIn=1.6;clearHeld();
+   obstacles=[];platforms=[];beans=[];pickups=[];spawnIn=1.6;clearHeld();
    Object.assign(player,{y:id==='space'?-80:0,vy:0,grounded:id!=='space',jumpTime:0});
    invulnerable=Math.max(invulnerable,1.5);
   }
   if(id==='space'&&state==='running'){beginLaunch();return true;}
   if(id==='vault'&&state==='running'){beginVault(false);return true;}
   showToast('NEUE WELT: '+WORLDS[id].name,2200);
-  announce('Neue Welt: '+WORLDS[id].name+(id==='space'?'. Halten zum Steigen, loslassen zum Sinken.':'. Springe ueber die Hindernisse.'));lastHUD='';return true;
+  announce('Neue Welt: '+WORLDS[id].name+(id==='space'?'. Halten zum Steigen, loslassen zum Sinken.':id==='party'?'. Springe auf die Blockplattformen und ueber die Hindernisse.':'. Springe ueber die Hindernisse.'));lastHUD='';return true;
  }
  function colorMix(a,b,t){const parse=v=>v[0]==='#'?[parseInt(v.slice(1,3),16),parseInt(v.slice(3,5),16),parseInt(v.slice(5,7),16)]:(v.match(/[\d.]+/g)||['0','0','0']).slice(0,3).map(Number);const aa=parse(a),bb=parse(b);return 'rgb('+aa.map((v,i)=>Math.round(v*(1-t)+bb[i]*t)).join(',')+')';}
  function paletteNow(){
@@ -1078,9 +1173,9 @@
  }
 
  function setOverlay(){
-  overlay.hidden=!['ready','over','paused'].includes(state);overlay.className='overlay'+(state==='over'?' is-over':state==='paused'?' is-paused':'');$('result-stats').hidden=state!=='over';
+  overlay.hidden=!['ready','over','paused'].includes(state);overlay.className='overlay'+(state==='over'?' is-over':state==='paused'?' is-paused':'');$('result-stats').hidden=state!=='over';$('start-version').hidden=state!=='ready';$('menu-news').hidden=state!=='ready';$('party-quickstart').disabled=sessionLocked();
   const name=CHARACTERS[selectedCharacter].name,fresh=score>bestAtStart;
-  const copy={ready:['SPACE & SAFE / VERSION 7.0',name==='KATI'?'BEREIT, KATI?':name==='KONRAD'?'BEREIT, KONRAD?':name==='LENNY STREET'?'BEREIT, LENNY?':name==='FEUERWEHR-TIAN'?'BEREIT ZUM EINSATZ?':'BEREIT, '+name+'?','Acht Welten. Tresor & Raketen!\nHerr Schade bei 10.000 Punkten.',"LOS GEHT'S"],paused:['EINMAL KURZ DURCHATMEN.',isBoss()?'DUELLPAUSE':'KAFFEEPAUSE','Alles ist angehalten.\nDeine Runde wartet auf dich.','WEITER GEHT\u2019S'],over:[fresh?'FRISCHER REKORD!':'EIN SPRUNG DANEBEN.',selectedCharacter==='nico'?'ABGESTIEGEN!':'VERSCH\u00dcTTET!','Neue Welt. Neues Gl\u00fcck.\nDein n\u00e4chster Versuch wartet.','NOCH EINE RUNDE']}[state];
+  const copy={ready:['PARTY BLOCKS / VERSION 8.1',name==='KATI'?'BEREIT, KATI?':name==='KONRAD'?'BEREIT, KONRAD?':name==='SINA'?'BEREIT, SINA?':name==='LENNY STREET'?'BEREIT, LENNY?':name==='FEUERWEHR-TIAN'?'BEREIT ZUM EINSATZ?':'BEREIT, '+name+'?','Neun Welten. Tresor, Raketen und Party-Bloecke!\nHerr Schade bei 10.000 Punkten.',"LOS GEHT'S"],paused:['EINMAL KURZ DURCHATMEN.',isBoss()?'DUELLPAUSE':'KAFFEEPAUSE','Alles ist angehalten.\nDeine Runde wartet auf dich.','WEITER GEHT\'S'],over:[fresh?'FRISCHER REKORD!':'EIN SPRUNG DANEBEN.',selectedCharacter==='nico'?'ABGESTIEGEN!':'VERSCHUETTET!','Neue Welt. Neues Glueck.\nDein naechster Versuch wartet.','NOCH EINE RUNDE']}[state];
   if(copy){$('panel-eyebrow').textContent=copy[0];$('panel-title').textContent=copy[1];$('panel-copy').replaceChildren();copy[2].split('\n').forEach((s,i)=>{if(i)$('panel-copy').append(document.createElement('br'));$('panel-copy').append(document.createTextNode(s));});$('primary-label').textContent=copy[3];$('result-score').textContent=String(score);$('result-best').textContent=String(best);$('start-hint').hidden=state==='over';}
  }
  function updateHUD(force=false){
@@ -1098,12 +1193,12 @@
    $('boss-road-label').textContent=isPractice()?'TRAINING / OHNE WERTUNG':bossDefeated?'BOSS BESIEGT!':isBoss()?'DUELL / HERR SCHADE':'BOSS BEI 10.000';$('road-progress').style.transform='scaleX('+clamp(score/CONFIG.bossScore,0,1)+')';
    const flight=currentWorld==='space'&&!isBoss()&&(state==='running'||(state==='paused'&&resumeState==='running'));
    $('jump-label').textContent=isBoss()?'KLICKDUELL':isVault()?'STOPP':flight?'HOCH':'SPRINGEN';
-   $('jump-hint').textContent=isBoss()?'Tippen, nicht halten':isVault()?'Die richtige Zahl!':flight?'Loslassen = sinken':'Halten = h\u00f6her';
+   $('jump-hint').textContent=isBoss()?'Tippen, nicht halten':isVault()?(vault?.mode==='play'?'Die richtige Zahl!':'Weiter mit SPACE'):flight?'Loslassen = sinken':'Halten = h\u00f6her';
    $('jump-button').setAttribute('aria-label',isBoss()?'Klickduell. Wiederholt tippen.':isVault()?'Tresorzahl bei der Zielzahl stoppen.':flight?'Rakete heben. Zum Steigen halten, zum Sinken loslassen.':'Springen. Zum hohen Sprung halten.');
    $('down-button').hidden=!flight;
    document.querySelector('.game-bottom-bar').classList.toggle('flight-active',flight);
-   $('keyboard-action').textContent=isBoss()?'Treffer':isVault()?'Ziffer stoppen':flight?'Hoch':'Springen';
-   document.querySelector('.hold-tip').textContent=isBoss()?'Tippen oder klicken. Halten z\u00e4hlt nicht.':isVault()?'SPACE = STOPP BEI DER ZIELZAHL':isLaunch()?'RAKETE STARTET GLEICH ...':flight?'Space / W / \u2191 hoch, S / \u2193 runter':'L\u00e4nger halten = h\u00f6her springen \u2197';
+   $('keyboard-action').textContent=isBoss()?'Treffer':isVault()?(vault?.mode==='play'?'Ziffer stoppen':'Tresor schließen'):flight?'Hoch':'Springen';
+   document.querySelector('.hold-tip').textContent=isBoss()?'Tippen oder klicken. Halten z\u00e4hlt nicht.':isVault()?(vault?.mode==='play'?'SPACE = STOPP BEI DER ZIELZAHL':'SPACE = TRESOR SCHLIESSEN'):isLaunch()?'RAKETE STARTET GLEICH ...':flight?'Space / W / \u2191 hoch, S / \u2193 runter':currentWorld==='party'?'Auf Party-Bloecke springen und Boni einsammeln!':'L\u00e4nger halten = h\u00f6her springen \u2197';
    $('boss-panel').hidden=!isBoss();$('boss-panel').inert=state==='paused';stage.classList.toggle('boss-open',isBoss());document.querySelector('.run-effects').hidden=isBoss()||isVault()||isLaunch();updateSpecialUI();updateCrew();
   }
   updateBossUI(force);
@@ -1132,23 +1227,105 @@
  }
  // --- Runner ---------------------------------------------------------------
  function screenSpeedFactor(){return clamp(W/820,.72,1);}
- function currentSpeed(){return Math.min(CONFIG.maxSpeed,CONFIG.startSpeed+elapsed*CONFIG.acceleration)*screenSpeedFactor()*(currentWorld==='space'?CONFIG.spaceSpeedFactor:1);}
+ function currentSpeed(){const base=Math.min(CONFIG.maxSpeed,CONFIG.startSpeed+elapsed*CONFIG.acceleration),extra=score>=CONFIG.bossScore?(score-CONFIG.bossScore)*0.032:0;return (base+extra)*screenSpeedFactor()*(currentWorld==='space'?CONFIG.spaceSpeedFactor:1);}
  function resetRun(){
-  clearHeld();elapsed=0;distance=0;score=0;collected=0;gameTime=0;ambient=0;spawnCount=0;lastMilestone=0;spawnIn=CONFIG.firstObstacleDelay;bonusPoints=0;extraLife=false;invulnerable=0;turboLeft=0;rescues=0;nextLarryAt=CONFIG.firstLarryAt;nextStarAt=CONFIG.firstStarAt;nextPackAt=CONFIG.firstPackAt;speechLeft=0;obstacles=[];beans=[];pickups=[];particles=[];floaters=[];dustIn=0;bossTriggered=false;bossDefeated=false;boss=null;bestAtStart=best;setupWorlds();speed=currentSpeed();Object.assign(player,{y:currentWorld==='space'?-86:0,vy:0,grounded:currentWorld!=='space',jumpTime:0});clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;lastBossHUD='';vault=null;launchLeft=0;launchElapsed=0;resetMusic();
+  clearHeld();elapsed=0;distance=0;score=0;collected=0;gameTime=0;ambient=0;spawnCount=0;lastMilestone=0;spawnIn=CONFIG.firstObstacleDelay;bonusPoints=0;extraLife=false;invulnerable=0;turboLeft=0;rescues=0;nextLarryAt=CONFIG.firstLarryAt;nextStarAt=CONFIG.firstStarAt;nextPackAt=CONFIG.firstPackAt;speechLeft=0;obstacles=[];platforms=[];beans=[];pickups=[];particles=[];floaters=[];dustIn=0;bossTriggered=false;bossDefeated=false;boss=null;bestAtStart=best;setupWorlds();speed=currentSpeed();Object.assign(player,{y:currentWorld==='space'?-86:0,vy:0,grounded:currentWorld!=='space',jumpTime:0});clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;lastBossHUD='';vault=null;launchLeft=0;launchElapsed=0;resetMusic();
  }
- function startGame(withJump=false){
+ function startGame(withJump=false,forcedWorld=null){
   if(state==='over'&&performance.now()-gameOverAt<380)return false;
-  const inputHeld=held,inputPointer=pointer,inputKeys=[...keys];unlockAudio();resetRun();state='running';resumeState='running';jumpBuffer=withJump?.13:0;if(withJump){held=inputHeld;pointer=inputPointer;inputKeys.forEach(k=>keys.add(k));}if(currentWorld==='space')beginLaunch();else if(currentWorld==='vault')beginVault(false);setOverlay();updateHUD(true);focusGame();sfx('start');if(state==='running')showToast('WELT: '+WORLDS[currentWorld].name,1300);announce('Los geht\u2019s! Springe \u00fcber Hindernisse, sammle Bohnen-Packs und halte Ausschau nach Larry.');
+  const inputHeld=held,inputPointer=pointer,inputKeys=[...keys];unlockAudio();resetRun();if(forcedWorld&&hasOwn(WORLDS,forcedWorld)){currentWorld=forcedWorld;worldBag=worldBag.filter(id=>id!==forcedWorld);worldBlend=1;worldFrom=null;worldElapsed=0;nextWorldAt=rand(25,33);Object.assign(player,{y:0,vy:0,grounded:true,jumpTime:0});}state='running';resumeState='running';jumpBuffer=withJump?.13:0;if(withJump){held=inputHeld;pointer=inputPointer;inputKeys.forEach(k=>keys.add(k));}if(currentWorld==='space')beginLaunch();else if(currentWorld==='vault')beginVault(false);setOverlay();updateHUD(true);focusGame();sfx('start');if(state==='running')showToast('WELT: '+WORLDS[currentWorld].name,1300);announce('Los geht\u2019s! Springe \u00fcber Hindernisse, sammle Bohnen-Packs und halte Ausschau nach Larry.');
   if((window.matchMedia('(pointer:coarse)').matches||innerWidth<=520)&&!document.fullscreenElement&&!shell.classList.contains('is-expanded')){const b=shell.getBoundingClientRect();if(b.bottom>innerHeight-10||b.top<0)window.scrollTo({top:Math.max(0,scrollY+b.top-10),behavior:'instant'});}return true;
  }
  function returnToMenu(){if(state==='boss'&&!boss.practice&&!['victory','defeat'].includes(boss.mode))return;resetRun();state='ready';setOverlay();updateHUD(true);render();$('primary-button').focus({preventScroll:true});}
  function pauseGame(){if(!['running','boss','vault','launch'].includes(state))return;resumeState=state;state='paused';clearHeld();resetMusic();stopNotes(true);setOverlay();updateHUD(true);persist();announce('Pause. Die Zeit ist angehalten.');}
  function resumeGame(){if(shopOpen||state!=='paused')return;unlockAudio();state=resumeState;clearHeld();setOverlay();updateHUD(true);focusGame();announce(isBoss()?'Das Duell geht weiter.':isVault()?'Der Tresor wartet auf die richtige Zahl.':isLaunch()?'Raketenstart geht weiter.':'Weiter geht\u2019s.');}
  function togglePause(){if(state==='paused')resumeGame();else pauseGame();}
- function pressJump(){if(shopOpen)return;unlockAudio();if(state==='boss'){bossPrimary();return;}if(state==='vault'){vaultStop();return;}if(state==='launch'){return;}if(state==='ready'||state==='over'){startGame(true);return;}if(state==='paused'){resumeGame();return;}if(state==='running')jumpBuffer=.13;}
+ function pressJump(){if(shopOpen)return;unlockAudio();if(state==='boss'){bossPrimary();return;}if(state==='vault'){if(vault?.mode==='play')vaultStop();else finishVault();return;}if(state==='launch'){return;}if(state==='ready'||state==='over'){startGame(true);return;}if(state==='paused'){resumeGame();return;}if(state==='running')jumpBuffer=.13;}
  function beginJump(){player.vy=-CONFIG.jumpVelocity;player.grounded=false;player.jumpTime=0;jumpBuffer=0;sfx('jump');spawnDust(player.x+31,ground-3,5);}
  function gameOver(){if(state!=='running')return;state='over';gameOverAt=performance.now();turboLeft=0;speechLeft=0;invulnerable=0;extraLife=false;clearHeld();resetMusic();best=Math.max(best,score);persist();setOverlay();updateHUD(true);sfx('over');announce('Runde vorbei. '+score+' Punkte. Noch einmal mit Leertaste.');if(!reducedMotion.matches)for(let i=0;i<16;i++)particles.push({x:player.x+rand(15,59),y:ground+player.y-65,vx:rand(-115,135),vy:rand(-235,-65),life:rand(.4,.8),max:.8,color:i%3?'#986441':'#e7c28d',size:3});}
- function createObstacle(kind,x,world=currentWorld){const step=world==='kit'?52:40,segments=kind==='double'?[{kind:'matcha',dx:0},{kind:'iced',dx:step}]:[{kind,dx:0}],w=kind==='double'?step+(world==='kit'?56:48):kind==='fireperson'?64:world==='kit'?56:48;return {x,kind,world,w,segments};}
+
+ const PARTY_TYPES=Object.freeze(['question','rainbow','spring','crumble','star']);
+ let partyPlatformSerial=0;
+ function createPartyPlatform(kind,x,w=94,top=ground-82){
+  return {id:++partyPlatformSerial,kind,x,y:top,baseY:top,w,h:27,phase:rand(0,6.28),used:false,flash:0,crumbleLeft:-1};
+ }
+ function spawnPartyPlatform(){
+  const kind=PARTY_TYPES[spawnCount%PARTY_TYPES.length],w=kind==='rainbow'?124:kind==='crumble'?86:kind==='spring'?82:94;
+  const top=ground-(kind==='rainbow'?91:kind==='spring'?71:kind==='star'?102:kind==='crumble'?82:88)+rand(-5,5);
+  const p=createPartyPlatform(kind,W+64,w,top);platforms.push(p);spawnCount++;
+  const n=kind==='star'?3:2;
+  for(let i=0;i<n;i++){beans.push({x:p.x+22+i*(w-44)/Math.max(1,n-1)-11,y:p.baseY-48,w:22,h:28,phase:rand(0,6.28)});}
+  // The horizontal gap stays navigable even when the main game accelerates.
+  spawnIn=rand(1.12,1.42)+w/Math.max(200,speed);
+ }
+ function updatePartyPlatforms(dt){
+  if(currentWorld!=='party')return;
+  for(const p of platforms){
+   p.x-=speed*dt;p.flash=Math.max(0,p.flash-dt);
+   if(p.kind==='rainbow')p.y=p.baseY+Math.sin(gameTime*2.1+p.phase)*6;
+   if(p.crumbleLeft>=0){p.crumbleLeft-=dt;
+    if(p.crumbleLeft<=0){
+     if(!reducedMotion.matches)for(let i=0;i<11;i++)particles.push({x:p.x+rand(0,p.w),y:p.y+rand(0,p.h),vx:rand(-90,90),vy:rand(-80,10),life:.48,max:.48,color:i%2?'#dcad80':'#f7e0a6',size:rand(3,7)});
+     p.crumbleLeft=-99;
+    }
+   }
+  }
+  platforms=platforms.filter(p=>p.x+p.w>-90&&p.crumbleLeft!==-99);
+ }
+ function landPartyPlatform(p){
+  p.flash=.22;
+  if(p.kind==='crumble'&&p.crumbleLeft<0){p.crumbleLeft=.58;showToast('ACHTUNG! BLOCK ZERFÄLLT!',900);sfx('tick');}
+  if(p.kind==='spring'){
+   player.vy=-CONFIG.jumpVelocity*1.22;player.grounded=false;player.jumpTime=0;spawnDust(player.x+38,p.y,12);sfx('jump');
+   floaters.push({x:p.x+p.w/2-28,y:p.y-21,life:.8,text:'BOING!',color:'#687ae7'});
+  }
+  if(!p.used&&(p.kind==='question'||p.kind==='star')){
+   p.used=true;const points=p.kind==='star'?100:50;bonusPoints+=points;
+   floaters.push({x:p.x+p.w/2-20,y:p.y-28,life:1.2,text:'+'+points,color:p.kind==='star'?'#cd9255':'#7d6a32'});
+   sfx(p.kind==='star'?'star':'bean');
+   if(p.kind==='star')showToast('STERNBLOCK! +100 PUNKTE',1300);
+   else showToast('FRAGEZEICHEN-BLOCK! +50',1050);
+  }
+ }
+ function drawPartyPlatforms(){
+  if(currentWorld!=='party')return;
+  const r=(x,y,w,h,col)=>rect(ctx,x,y,w,h,col);
+  for(const p of platforms){
+   const x=Math.round(p.x),y=Math.round(p.y),w=p.w,h=p.h;
+   if(x+w<-5||x>W+5)continue;
+   const bases={question:['#c9853d','#ffd276','#fff1af'],rainbow:['#716dc3','#a29cf0','#e3dafa'],spring:['#4774b4','#8bc0ef','#e3f3ff'],crumble:['#b57b67','#edbd94','#ffe2bd'],star:['#b76caa','#f1b7d9','#ffe1f1']};
+   const col=bases[p.kind],breakup=p.kind==='crumble'&&p.crumbleLeft>=0;
+   ctx.save();if(breakup&&p.crumbleLeft<.25&&!reducedMotion.matches)ctx.translate((Math.floor(gameTime*25)%2?2:-2),0);
+   if(p.kind==='rainbow'){
+    for(let j=0;j<5;j++)r(x+j*4,y-2-j%2*2,w-j*8,5,['#ec8db3','#ffd084','#fff2b1','#9fe4c8','#8dcaf0'][j]);
+    r(x,y+1,w,h-2,'#374b64');r(x+3,y+3,w-6,h-7,col[1]);r(x+4,y+5,w-8,6,col[2]);
+    for(let i=0;i<6;i++)r(x+8+i*18,y+13,9,6,['#e897bb','#f4d68a','#a5ddda'][i%3]);
+   }else{
+    r(x,y,w,h,'#343d4d');r(x+3,y+3,w-6,h-7,col[0]);r(x+4,y+4,w-8,9,col[1]);r(x+6,y+6,w-12,3,col[2]);
+    for(let a=0;a<w-12;a+=22){r(x+8+a,y+19,10,3,col[2]);r(x+9+a,y+23,6,2,col[1]);}
+   }
+   r(x+3,y+h-4,w-6,3,'#39485b');for(let i=8;i<w-5;i+=21)r(x+i,y+h-6,3,3,col[0]);
+   if(p.kind==='question'){
+    r(x+w/2-14,y+5,28,18,p.used?'#8b876f':'#fff2b3');
+    pixelText(ctx,p.used?'!':'?',x+w/2-7,y+4,2.5,p.used?'#57645e':'#946039');
+    r(x+7,y+4,4,4,'#fff1bb');r(x+w-11,y+4,4,4,'#fff1bb');
+   }else if(p.kind==='star'){
+    const cx=x+w/2,cy=y+13,glow=p.used?'#c1b4c6':'#fff0a0';
+    r(cx-4,cy-11,8,21,glow);r(cx-13,cy-3,26,7,glow);r(cx-9,cy+2,18,8,glow);r(cx-6,cy+5,12,6,glow);
+    r(cx-3,cy-3,3,3,'#925d73');r(cx+4,cy-3,3,3,'#925d73');
+   }else if(p.kind==='spring'){
+    r(x+18,y-8,w-36,8,'#293d58');r(x+20,y-12,w-40,6,'#fe89b6');r(x+22,y-10,w-44,3,'#fff1c9');
+    for(let i=0;i<4;i++){const xx=x+23+i*(w-47)/4;r(xx,y+3,8,14,'#4a669c');r(xx+2,y+5,4,11,'#f6c5c1');}
+    r(x+w/2-3,y+3,6,13,'#e5f2fd');
+   }else if(p.kind==='crumble'){
+    for(const [dx,dy] of [[18,9],[30,13],[57,7],[w-23,17]]){r(x+dx,y+dy,10,2,'#99674b');r(x+dx+5,y+dy+2,2,4,'#99674b');}
+   }
+   if(p.flash>0){ctx.globalAlpha=.32;r(x-3,y-3,w+6,h+4,'#ffffff');}
+   ctx.restore();
+  }
+ }
+
+ function createObstacle(kind,x,world=currentWorld){const step=world==='kit'?52:world==='party'?46:40,segments=kind==='double'?[{kind:'matcha',dx:0},{kind:'iced',dx:step}]:[{kind,dx:0}],w=kind==='double'?step+(world==='kit'?56:48):kind==='fireperson'?64:world==='kit'?56:48;return {x,kind,world,w,segments};}
  // Flight obstacles describe a safe opening, rather than random solid walls.
  function createFlightObstacle(x,style='gate',altitude=128){
   return{x,kind:'flight',world:'space',flight:true,w:72,segments:[],style,altitude:clamp(altitude,80,178),opening:126};
@@ -1194,11 +1371,13 @@
   if(elapsed>=nextPackAt&&!pickups.some(p=>p.type==='pack')){pickups.push(createPickup('pack',W+48));nextPackAt=elapsed+rand(10,14);spawnIn=1.2+120/speed;return;}
   if(elapsed>=nextStarAt&&turboLeft<=0&&!pickups.some(p=>p.type==='star')){pickups.push(createPickup('star',W+48));nextStarAt=elapsed+rand(16,22);spawnIn=1.3+130/speed;return;}
   if(currentWorld==='space'){spawnFlightSlot();return;}
+  if(currentWorld==='party'){spawnPartyPlatform();return;}
   let kind=elapsed>4&&Math.random()<.58?'iced':'matcha';if(elapsed>10&&Math.random()<.38)kind='double';
   if(currentWorld==='kit'&&Math.random()<.34)kind='fireperson';
+  if(currentWorld==='party'){if(Math.random()<.48)kind='matcha';else if(Math.random()<.82)kind='iced';else kind='double';}
   const ob=createObstacle(kind,W+45);obstacles.push(ob);spawnCount++;
-  if(spawnCount===1||Math.random()<.76){const count=kind==='double'?2:1;for(let i=0;i<count;i++)beans.push({x:ob.x+ob.w/2-11+(i-(count-1)/2)*28,y:ground-132-rand(0,8),phase:rand(0,6.28),w:22,h:28});}
-  const pressure=clamp(elapsed/18,0,1),gap=speed*rand(1.02-pressure*.10,1.32-pressure*.10)+rand(40,65);spawnIn=(ob.w+gap)/speed;
+  if(spawnCount===1||Math.random()<.76){const count=kind==='double'?2:1;for(let i=0;i<count;i++)beans.push({x:ob.x+ob.w/2-11+(i-(count-1)/2)*28,y:currentWorld==='party'?(kind==='iced'?ground-160:ground-142)-rand(0,8):ground-132-rand(0,8),phase:rand(0,6.28),w:22,h:28});}
+  const pressure=clamp(elapsed/18,0,1),gap=speed*rand(currentWorld==='party'?1.12-pressure*.06:1.02-pressure*.10,currentWorld==='party'?1.45-pressure*.04:1.32-pressure*.10)+rand(currentWorld==='party'?52:40,currentWorld==='party'?84:65);spawnIn=(ob.w+gap)/speed;
  }
  function itemLabel(text,x,y,color){
   const scale=1.5,w=textWidth(text,scale)+14,h=19,left=Math.round(x-w/2);
@@ -1269,6 +1448,22 @@
  const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
  function playerBox(){return currentWorld==='space'&&!isBoss()?{x:player.x+4,y:ground-61+player.y,w:84,h:38}:{x:player.x+15,y:ground-65+player.y,w:46,h:62};}
  function obstacleBoxes(ob){if(ob.flight)return flightBoxes(ob);return ob.segments.flatMap(part=>{const art=obstacleArt[ob.world][part.kind],h=art.height||74;return art.boxes.map(box=>({x:ob.x+part.dx+box.x,y:ground-h+box.y,w:box.w,h:box.h}));});}
+ function resolvePartyPlatforms(prevY){
+  if(currentWorld!=='party')return false;
+  const prevFoot=ground-3+prevY,foot=ground-3+player.y,px=player.x+16,pw=44;
+  let candidate=null;
+  for(const p of platforms){
+   if(px+pw-5<=p.x||px+5>=p.x+p.w)continue;
+   const standing=player.grounded&&prevY<-3&&Math.abs(prevFoot-p.y)<=14;
+   const landing=!player.grounded&&player.vy>=0&&prevFoot<=p.y+5&&foot>=p.y-1;
+   if((standing||landing)&&(!candidate||p.y<candidate.y))candidate=p;
+  }
+  if(!candidate)return false;
+  const newContact=!player.grounded;
+  player.y=candidate.y-ground+3;player.vy=0;player.grounded=true;player.jumpTime=0;
+  if(newContact)landPartyPlatform(candidate);
+  return true;
+ }
  function spawnDust(x,y,count){if(reducedMotion.matches)return;for(let i=0;i<count;i++)particles.push({x:x+rand(-12,12),y:y+rand(-1,2),vx:rand(-45,-8),vy:rand(-45,-10),life:rand(.15,.35),max:.35,color:'#a6b09c',size:rand(2,4)});}
  function updateParticles(dt){for(const p of particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=390*dt;}particles=particles.filter(p=>p.life>0).slice(-100);for(const f of floaters){f.life-=dt;f.y-=28*dt;}floaters=floaters.filter(f=>f.life>0);}
  function recalcScore(){score=Math.floor(distance/CONFIG.distancePerPoint)+collected*CONFIG.beanPoints+bonusPoints;best=Math.max(best,score);}
@@ -1278,7 +1473,7 @@
   if(!practice&&(bossTriggered||state!=='running'))return false;
   if(practice){if(sessionLocked())return false;unlockAudio();resetRun();}
   else{bossTriggered=true;persist();}
-  clearHeld();obstacles=[];beans=[];pickups=[];floaters=[];particles=[];speechLeft=0;Object.assign(player,{y:0,vy:0,grounded:true,jumpTime:0});
+  clearHeld();obstacles=[];platforms=[];beans=[];pickups=[];floaters=[];particles=[];speechLeft=0;Object.assign(player,{y:0,vy:0,grounded:true,jumpTime:0});
   boss=makeBoss(practice);state='boss';resumeState='boss';resetMusic();setOverlay();clearTimeout(toastTimeout);$('toast').classList.remove('visible');toastHold=0;lastBossHUD='';updateHUD(true);focusGame();sfx('boss');announce((practice?'Boss-Training. ':'Bosskampf. ')+'Herr Schade wartet. Drei Phasen: 16, 20 und 24 Treffer in jeweils sechs Sekunden.');return true;
  }
  function beginBossCountdown(seconds=3){if(!boss||state!=='boss')return;boss.mode='countdown';boss.countdown=seconds;boss.lastCount=-1;boss.clicks=0;boss.left=BOSS_PHASES[boss.phase].duration;clearHeld();resetMusic();updateHUD(true);}
@@ -1294,7 +1489,7 @@
   if(extraLife&&!boss.practice){extraLife=false;rescues++;boss.retry=true;sfx('rescue');beginBossCountdown(3);announce('Larry rettet dich. Du wiederholst diese Phase.');}
   else{boss.mode='defeat';boss.resultWait=.65;if(!boss.practice){best=Math.max(best,score);persist();}sfx('over');announce('Herr Schade gewinnt diese Runde. Du kannst es noch einmal versuchen.');updateHUD(true);}
  }
- function finishBoss(){if(state!=='boss'||boss?.mode!=='victory'||boss.practice)return;state='running';resumeState='running';clearHeld();invulnerable=Math.max(invulnerable,2);spawnIn=1.25;obstacles=[];beans=[];pickups=[];setOverlay();updateHUD(true);focusGame();showToast('BOSS BESIEGT. WEITER GEHT\u2019S!',1700);}
+ function finishBoss(){if(state!=='boss'||boss?.mode!=='victory'||boss.practice)return;state='running';resumeState='running';clearHeld();invulnerable=Math.max(invulnerable,2);spawnIn=1.25;obstacles=[];platforms=[];beans=[];pickups=[];setOverlay();updateHUD(true);focusGame();showToast('BOSS BESIEGT. WEITER GEHT\u2019S!',1700);}
  function updateBoss(dt){
   boss.hitFlash=Math.max(0,boss.hitFlash-dt);boss.resultWait=Math.max(0,boss.resultWait-dt);
   if(boss.mode==='countdown'){
@@ -1315,6 +1510,7 @@
   if(turboAtStart)turboLeft=Math.max(0,turboLeft-realDt);
   invulnerable=Math.max(0,invulnerable-realDt);worldBlend=Math.min(1,worldBlend+realDt/1.1);worldElapsed+=realDt;
   elapsed+=realDt;gameTime+=dt;ambient+=dt;speed=currentSpeed();distance+=speed*dt;
+  updatePartyPlatforms(dt);
   jumpBuffer=Math.max(0,jumpBuffer-realDt);
   if(currentWorld==='space'){
    player.grounded=false;
@@ -1325,9 +1521,16 @@
    if(player.y<-CONFIG.spaceCeiling){player.y=-CONFIG.spaceCeiling;player.vy=Math.max(0,player.vy);}
    if(!reducedMotion.matches){dustIn-=dt;if(dustIn<=0){spawnDust(player.x+8,ground+player.y+46,1);dustIn=.07;}}
   }else{
+   const prevY=player.y;
    if(jumpBuffer>0&&player.grounded)beginJump();
-   if(!player.grounded){const light=held&&player.jumpTime<CONFIG.holdTime&&player.vy<0;player.vy+=(light?CONFIG.heldGravity:CONFIG.gravity)*dt;player.y+=player.vy*dt;player.jumpTime+=dt;if(player.y>=0){player.y=0;player.vy=0;player.grounded=true;spawnDust(player.x+39,ground-2,5);}}
-   else{dustIn-=dt;if(dustIn<=0){spawnDust(player.x+19,ground-1,1);dustIn=.16;}}
+   if(!player.grounded){const light=held&&player.jumpTime<CONFIG.holdTime&&player.vy<0;player.vy+=(light?CONFIG.heldGravity:CONFIG.gravity)*dt;player.y+=player.vy*dt;player.jumpTime+=dt;}
+   let supported=false;
+   if(currentWorld==='party')supported=resolvePartyPlatforms(prevY);
+   if(!supported){
+    if(player.y>=0){if(!player.grounded&&prevY<0)spawnDust(player.x+39,ground-2,5);player.y=0;player.vy=0;player.grounded=true;}
+    else if(player.grounded)player.grounded=false;
+   }
+   if(player.grounded){dustIn-=dt;if(dustIn<=0){spawnDust(player.x+19,ground-1,1);dustIn=.16;}}
   }
   spawnIn-=dt;if(spawnIn<=0)spawnObstacle();obstacles.forEach(o=>o.x-=speed*dt);beans.forEach(b=>b.x-=speed*dt);pickups.forEach(p=>p.x-=speed*dt);
   const hit=playerBox();
@@ -1424,6 +1627,41 @@
    const sign=mod(W*.8-distance*.18,W+720)-160;if(sign>-170&&sign<W){rect(ctx,sign,ground-63,83,29,'#e5c593');rect(ctx,sign+3,ground-60,77,23,p.line);pixelText(ctx,'COFFEE',sign+8,ground-52,2,'#ebd7ab');rect(ctx,sign+12,ground-34,4,30,p.line);rect(ctx,sign+65,ground-34,4,30,p.line);}
   }else if(w==='space'){
    hills(p.hillBack,.06,193,32);hills(p.hill,.16,113,10);for(let i=-1;i<W/160+1;i++){const x=i*160-mod(distance*.2,160);rect(ctx,x,ground-17,21,8,p.detail);rect(ctx,x+5,ground-21,9,4,p.line);}
+  }else if(w==='party'){
+   // Pastel fantasy game board, all original pixel art.
+   hills(p.hillBack,.045,174,39);
+   for(let i=-1;i<W/260+2;i++){
+    const x=Math.round(i*260-mod(distance*.075,260)),base=ground-37,h=100+mod(i*19,27);
+    rect(ctx,x+40,base-h+29,125,h-24,'#8b9ac8');rect(ctx,x+46,base-h+32,114,h-30,'#b8b8e6');
+    rect(ctx,x+36,base-h+7,28,h-5,'#9e95c6');rect(ctx,x+38,base-h+10,23,h-9,'#d2c7ee');
+    rect(ctx,x+138,base-h+1,31,h+1,'#9e95c6');rect(ctx,x+141,base-h+5,24,h-4,'#d2c7ee');
+    for(let j=0;j<4;j++){rect(ctx,x+37+j*8,base-h,7,8,'#e6dafa');rect(ctx,x+138+j*9,base-h-6,7,7,'#e6dafa');}
+    rect(ctx,x+52,base-h+54,14,27,'#725d9b');rect(ctx,x+112,base-h+46,14,21,'#725d9b');
+    rect(ctx,x+78,base-30,32,30,'#6d77af');rect(ctx,x+82,base-27,24,27,'#415d85');
+    rect(ctx,x+49,base-h+31,60,6,'#fff4d5');rect(ctx,x+59,base-h+40,78,5,'#f6e2f5');
+    rect(ctx,x+49,base-h-11,3,14,'#445b75');rect(ctx,x+52,base-h-13,17,12,i%2?'#f2b0ca':'#f4d67d');rect(ctx,x+56,base-h-11,4,3,'#fff4cf');
+    rect(ctx,x+152,base-h-18,3,17,'#445b75');rect(ctx,x+155,base-h-19,18,12,i%2?'#92dfc5':'#a5d4f5');
+   }
+   hills(p.hill,.135,113,11);
+   for(let i=-1;i<W/146+2;i++){
+    const x=i*146-mod(distance*.18,146),y=ground-35;
+    rect(ctx,x,y,42,22,'#f6d88c');rect(ctx,x+5,y-4,32,6,'#ffffff');
+    rect(ctx,x+7,y+6,7,7,'#5d87b3');rect(ctx,x+25,y+6,7,7,'#5d87b3');rect(ctx,x+16,y+12,10,2,'#ad8a70');
+    rect(ctx,x+68,y-24,21,22,'#f6c5d4');rect(ctx,x+72,y-29,13,6,'#fff1e9');rect(ctx,x+76,y-39,5,10,'#85bf98');
+   }
+   // Festive bunting anchored to the upper world, behind interactive platforms.
+   for(let j=0;j<2;j++){
+    const y=38+j*62;rect(ctx,0,y,W,2,j?'#fdf5ce':'#f3eddf');
+    for(let i=-1;i<W/46+2;i++){
+     const x=i*46-mod(distance*.024,46);const colors=['#e9a2bd','#f8d581','#91d3d0','#bdabe5'];const color=colors[(i+j+40)%4];
+     rect(ctx,x+12,y+2,17,5,color);rect(ctx,x+16,y+7,9,6,color);rect(ctx,x+19,y+13,3,4,color);
+    }
+   }
+   // Confetti drifts in multiple colors and parallax speeds.
+   if(!reducedMotion.matches)for(let i=0;i<25;i++){
+    const x=mod(i*163-distance*.085,W+60)-20,y=mod(i*47+gameTime*(4+i%3*2),Math.max(60,ground-142))+33;
+    rect(ctx,x,y,i%4?3:6,i%3?4:2,['#f79ab5','#f7d477','#90d9c0','#b39be7'][i%4]);
+   }
   }else if(w==='kit'){
    hills(p.hillBack,.06,175,38);hills(p.hill,.14,110,13);
    for(let i=-1;i<W/180+2;i++){const x=i*180-mod(distance*.16,180);rect(ctx,x+12,ground-76,58,40,p.line);rect(ctx,x+15,ground-73,52,34,'#edf1f4');rect(ctx,x+22,ground-64,16,12,'#8ec0cf');rect(ctx,x+42,ground-64,12,22,'#d76e57');rect(ctx,x+24,ground-41,10,8,'#f1b05c');}
@@ -1436,7 +1674,7 @@
    hills(p.hill,.13,93,15);if(!reducedMotion.matches){ctx.save();ctx.globalAlpha=.5;for(let i=0;i<12;i++){const x=mod(i*137-distance*.15,W),y=ground-15-mod(i*31+ambient*18,130);rect(ctx,x,y,2,3,'#eab07b');}ctx.restore();}
   }
   rect(ctx,0,ground,W,H-ground,p.ground);rect(ctx,0,ground,W,2,p.line);rect(ctx,0,ground+3,W,2,p.soil);
-  for(let i=-1;i<=Math.ceil(W/38)+1;i++){const idx=i+Math.floor(distance/38),x=i*38-mod(distance,38);rect(ctx,x,ground+17+mod(idx*7,21),4+mod(idx*3,10),2,p.detail);if(idx%3===0)rect(ctx,x+18,ground+11,3,2,p.detail);if(w==='city'&&idx%2===0)rect(ctx,x,ground+21,22,3,'#e3ddbf');if(w==='cafe'&&idx%4===0){rect(ctx,x+22,ground-5,2,5,p.line);rect(ctx,x+19,ground-3,2,3,p.line);rect(ctx,x+25,ground-4,2,4,p.line);}if(w==='space'&&idx%4===0){rect(ctx,x+4,ground+20,23,6,p.soil);rect(ctx,x+7,ground+19,16,2,p.detail);}if(w==='kit'&&idx%4===0){rect(ctx,x+8,ground+18,10,4,p.line);rect(ctx,x+10,ground+14,6,4,p.detail);}if(w==='lava'&&idx%3===0){rect(ctx,x,ground+15,21,3,'#da9566');rect(ctx,x+19,ground+16,3,11,'#d18462');}}
+  for(let i=-1;i<=Math.ceil(W/38)+1;i++){const idx=i+Math.floor(distance/38),x=i*38-mod(distance,38);rect(ctx,x,ground+17+mod(idx*7,21),4+mod(idx*3,10),2,p.detail);if(idx%3===0)rect(ctx,x+18,ground+11,3,2,p.detail);if(w==='city'&&idx%2===0)rect(ctx,x,ground+21,22,3,'#e3ddbf');if(w==='cafe'&&idx%4===0){rect(ctx,x+22,ground-5,2,5,p.line);rect(ctx,x+19,ground-3,2,3,p.line);rect(ctx,x+25,ground-4,2,4,p.line);}if(w==='space'&&idx%4===0){rect(ctx,x+4,ground+20,23,6,p.soil);rect(ctx,x+7,ground+19,16,2,p.detail);}if(w==='kit'&&idx%4===0){rect(ctx,x+8,ground+18,10,4,p.line);rect(ctx,x+10,ground+14,6,4,p.detail);}if(w==='party'){const color=['#f6d884','#efb8ce','#b7b7e9','#a6e4d6'][mod(Math.floor(idx/2),4)];if(idx%2===0){rect(ctx,x+1,ground+11,34,19,'#42785a');rect(ctx,x+3,ground+13,30,15,color);rect(ctx,x+10,ground+17,4,4,'#f7fbdf');rect(ctx,x+23,ground+19,3,3,'#f7fbdf');}else{rect(ctx,x+6,ground+27,22,3,'#dff1c2');}}if(w==='lava'&&idx%3===0){rect(ctx,x,ground+15,21,3,'#da9566');rect(ctx,x+19,ground+16,3,11,'#d18462');}}
   rect(ctx,0,H-12,W,1,p.soil);return p;
  }
  function drawObstacle(ob){if(ob.flight){drawFlightObstacle(ob);return;}for(const part of ob.segments){const art=part.kind==='fireperson'?labFireSprites[reducedMotion.matches?0:Math.floor(gameTime*8)%4]:obstacleArt[ob.world][part.kind];ctx.drawImage(art.image,Math.round(ob.x+part.dx),ground-(art.height||74),art.width||48,art.height||74);}}
@@ -1469,7 +1707,7 @@
   ctx.imageSmoothingEnabled=false;const p=drawBackground();
   if(activeTurbo()&&state==='running'&&!reducedMotion.matches){ctx.save();ctx.globalAlpha=.2;for(let i=0;i<9;i++){const x=mod(i*173-distance*1.8,W+130)-110,y=90+mod(i*43,Math.max(50,ground-150));rect(ctx,x,y,25+i%3*12,2,'#78bcff');}ctx.restore();}
   if(state==='ready'){if(W>700){drawPickup(createPickup('larry',W*.70),p);drawPickup(createPickup('pack',W*.81),p);drawPickup(createPickup('star',W*.92),p);}else drawObstacle(createObstacle('matcha',W-54));if(W>600)ctx.drawImage(beanArt,Math.round(W*.63),ground-127,18,23);}
-  else{for(const ob of obstacles)drawObstacle(ob);for(const b of beans)drawBean(b);for(const item of pickups)drawPickup(item,p);}
+  else{drawPartyPlatforms();for(const ob of obstacles)drawObstacle(ob);for(const b of beans)drawBean(b);for(const item of pickups)drawPickup(item,p);}
   drawPlayer(p);
   ctx.save();for(const a of particles){ctx.globalAlpha=clamp(a.life/a.max,0,1);rect(ctx,a.x,a.y,a.size,a.size,a.color);}ctx.restore();
   ctx.save();for(const f of floaters){ctx.globalAlpha=clamp(f.life/.3,0,1);pixelText(ctx,f.text||'+25',f.x,f.y,1,p.night>.5?'#f4dec0':f.color||'#896138');}ctx.restore();
@@ -1479,7 +1717,7 @@
   const b=stage.getBoundingClientRect();if(b.width<1||b.height<1)return;const oldW=W,oldGround=ground,oldX=player.x,ratio=b.width/b.height;
   W=Math.max(440,Math.round(360*ratio));H=Math.round(W/ratio);ground=H-58;canvas.width=W;canvas.height=H;ctx.imageSmoothingEnabled=false;player.x=Math.round(clamp(W*.15,62,150));
   if(state!=='ready'&&(W!==oldW||ground!==oldGround)){
-   const shift=player.x-oldX;for(const o of obstacles)o.x+=shift;for(const a of [...beans,...pickups,...particles,...floaters]){a.x+=shift;a.y+=ground-oldGround;}
+   const shift=player.x-oldX;for(const o of obstacles)o.x+=shift;for(const p of platforms){p.x+=shift;p.y+=ground-oldGround;p.baseY+=ground-oldGround;}for(const a of [...beans,...pickups,...particles,...floaters]){a.x+=shift;a.y+=ground-oldGround;}
    if(['running','boss','launch','vault'].includes(state))pauseGame();
   }
   speed=currentSpeed();render();updateHUD(true);
@@ -1524,6 +1762,7 @@
  for(const el of [stage,$('jump-button'),$('boss-action')])el.addEventListener('contextmenu',e=>e.preventDefault());
  const jumpCodes=new Set(['Space','ArrowUp','KeyW']);const downCodes=new Set(['ArrowDown','KeyS']);
  document.addEventListener('keydown',event=>{
+  if($('news-dialog').open)return;
   if(shopOpen){
    if(event.code==='Escape'){event.preventDefault();event.stopPropagation();closeShop();}
    if(event.code==='Tab'){const nodes=Array.from($('shop-dialog').querySelectorAll('button:not(:disabled)')).filter(n=>!n.hidden&&n.getClientRects().length);const first=nodes[0],last=nodes[nodes.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}
@@ -1545,6 +1784,14 @@ document.addEventListener('keyup',event=>{if(jumpCodes.has(event.code)||event.co
  $('vault-stop').addEventListener('click',vaultStop);
  $('vault-continue').addEventListener('click',finishVault);
  $('vault-practice-button').addEventListener('click',()=>{if(beginVault(true)&&innerWidth<=760){const b=shell.getBoundingClientRect();if(b.bottom>innerHeight)window.scrollTo({top:Math.max(0,scrollY+b.top-9),behavior:'instant'});}});
+ function startPartyRun(){if(sessionLocked())return false;return startGame(false,'party');}
+ $('party-quickstart').addEventListener('click',startPartyRun);
+ const newsDialog=$('news-dialog');
+ function closeNews(){if(newsDialog.open)newsDialog.close();}
+ $('menu-news').addEventListener('click',()=>{if(state!=='ready')return;if(typeof newsDialog.showModal==='function')newsDialog.showModal();else newsDialog.setAttribute('open','');$('news-close').focus({preventScroll:true});});
+ $('news-close').addEventListener('click',closeNews);
+ newsDialog.addEventListener('click',e=>{if(e.target===newsDialog)closeNews();});
+ $('news-party').addEventListener('click',()=>{closeNews();startPartyRun();});
  $('primary-button').addEventListener('click',()=>{if(state==='paused')resumeGame();else startGame(false);});
  $('pause-button').addEventListener('click',togglePause);$('sound-button').addEventListener('click',toggleSound);$('music-button').addEventListener('click',toggleMusic);
 
@@ -1565,7 +1812,7 @@ document.addEventListener('keyup',event=>{if(jumpCodes.has(event.code)||event.co
  // Test interface is only created when a test harness enables it BEFORE loading.
  // It is absent during normal play and makes no network requests.
  if(window.__TASSEN_TEST_MODE__===true){window.__tt={
-  snapshot:()=>({state,resumeState,W,H,ground,elapsed,distance,score,best,collected,bonusPoints,packBalance,unlocked:[...unlocked],shopOpen,shopSelection,launchElapsed,launchLeft,launchSeen,vault:vault?{...vault,code:[...vault.code],solved:[...vault.solved]}:null,vaultWins,vaultAttempts,nextLarryAt,flightCount,lastFlightAltitude,speed,spawnIn,spawnCount,selectedCharacter,extraLife,invulnerable,turboLeft,speechLeft,gameTime,ambient,worldElapsed,nextWorldAt,currentWorld,worldChanges,worldBag:worldBag.slice(),bossTriggered,bossDefeated,boss:boss?{...boss}:null,player:{...player},held,downHeld,storageOK,sound,music,musicNotes,audioState:audio?.state||null,audioNodes:activeNodes.size,rescues,pickups:pickups.map(o=>({...o})),obstacles:obstacles.map(o=>({...o})),beans:beans.map(o=>({...o})),particles:particles.length}),
+  snapshot:()=>({state,resumeState,W,H,ground,elapsed,distance,score,best,collected,bonusPoints,packBalance,unlocked:[...unlocked],shopOpen,shopSelection,launchElapsed,launchLeft,launchSeen,vault:vault?{...vault,code:[...vault.code],solved:[...vault.solved]}:null,vaultWins,vaultAttempts,nextLarryAt,flightCount,lastFlightAltitude,speed,spawnIn,spawnCount,selectedCharacter,extraLife,invulnerable,turboLeft,speechLeft,gameTime,ambient,worldElapsed,nextWorldAt,currentWorld,worldChanges,worldBag:worldBag.slice(),bossTriggered,bossDefeated,boss:boss?{...boss}:null,player:{...player},held,downHeld,storageOK,sound,music,musicNotes,audioState:audio?.state||null,audioNodes:activeNodes.size,rescues,pickups:pickups.map(o=>({...o})),obstacles:obstacles.map(o=>({...o})),platforms:platforms.map(o=>({...o})),beans:beans.map(o=>({...o})),particles:particles.length}),
   shopOpen:openShop,shopClose:closeShop,
   launchStart:()=>{if(state!=='running')return false;return changeWorld('space');},launchSkip:finishLaunch,
   vaultStart:beginVault,vaultStop,vaultEnd:finishVault,vaultSetCode:digits=>{if(!vault||digits.length!==3)return false;vault.code=digits.slice().map(d=>Math.round(clamp(d,0,9)));updateVaultUI();return true;},
@@ -1582,11 +1829,11 @@ document.addEventListener('keyup',event=>{if(jumpCodes.has(event.code)||event.co
   manual:on=>{manualClock=on;accumulator=0;previous=performance.now();},step:(seconds,draw=true)=>{for(let i=0;i<Math.round(seconds/fixedStep);i++)update(fixedStep);if(draw){render();updateHUD(true);}},
   start:()=>{gameOverAt=-Infinity;startGame(false);},menu:returnToMenu,select:selectCharacter,pause:pauseGame,resume:resumeGame,practice:()=>startBossFight(true),bossAction:bossPrimary,bossHit,
   jump:hold=>{held=!!hold;pressJump();},release:clearHeld,hit:gameOver,collect:type=>{collectPickup(createPickup(type,player.x));render();updateHUD(true);},
-  clear:()=>{obstacles=[];beans=[];pickups=[];spawnIn=1000;},spawn:spawnObstacle,
+  clear:()=>{obstacles=[];platforms=[];beans=[];pickups=[];spawnIn=1000;},spawn:spawnObstacle,partyPlatform:(kind,x,w=94,top=ground-85)=>{const tile=createPartyPlatform(kind,x,w,top);platforms.push(tile);return tile;},
   obstacle:(kind,x,world=currentWorld)=>{const o=createObstacle(kind,x,world);obstacles.push(o);return o;},pickup:(type,x)=>{const p=createPickup(type,x);pickups.push(p);return p;},bean:(x,y)=>beans.push({x,y,w:18,h:23,phase:0}),
   collision:()=>{const ob=createObstacle('iced',player.x+18);obstacles.push(ob);takeHit(ob);render();updateHUD(true);},
   setScore:n=>{distance=Math.max(0,(n-collected*CONFIG.beanPoints-bonusPoints)*CONFIG.distancePerPoint);recalcScore();render();updateHUD(true);},setElapsed:t=>{elapsed=t;gameTime=t;speed=currentSpeed();},
-  world:id=>{changeWorld(id);worldBlend=1;render();updateHUD(true);},nextWorld:()=>{changeWorld();render();updateHUD(true);},
+  world:id=>{changeWorld(id);worldBlend=1;render();updateHUD(true);},partyStart:()=>startGame(false,'party'),nextWorld:()=>{changeWorld();render();updateHUD(true);},
   musicTick:scheduleMusic,soundToggle:toggleSound,musicToggle:toggleMusic,render:()=>{render();updateHUD(true);},fallbackFullscreen
  };}
 })();
