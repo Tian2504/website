@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f3ea">
+  <meta name="description" content="Die kleine Browser-Arcade von Tian G&#246;ring. W&#228;hle zwischen Tassen Tian und Streetwear Mall und starte deine n&#228;chste Runde.">
+  <title>GOERING.CC &#183; Deine n&#228;chste Runde</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%2320312b'/%3E%3Cpath d='M14 29h8v-8h8v8h8v8h-8v8h-8v-8h-8z' fill='%23d6f58a'/%3E%3Ccircle cx='47' cy='26' r='5' fill='%23f2b071'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --paper: #f5f3ea; --ink: #20312b; --muted: #657169;
+      --line: #d5d9cb; --lime: #d6f58a; --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-family: var(--sans); color: var(--ink); background: var(--paper); color-scheme: light;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; min-width: 280px; -webkit-font-smoothing: antialiased; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; cursor: pointer; }
+    a { color: inherit; }
+    button, a, summary { touch-action: manipulation; }
+    button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #386ed9; outline-offset: 5px; }
+    ::selection { background: var(--lime); color: var(--ink); }
+    [hidden] { display: none !important; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .skip { position: absolute; top: -90px; left: 20px; z-index: 30; background: var(--ink); color: white; padding: 14px 18px; border-radius: 8px; }
+    .skip:focus { top: 16px; }
+    .icon { width: 20px; height: 20px; display: block; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .site-header { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; flex: none; }
+    .brand-symbol { width: 43px; height: 43px; border-radius: 12px; background: var(--ink); color: var(--lime); display: grid; place-items: center; transform: rotate(-7deg); }
+    .brand-symbol .icon { width: 26px; height: 26px; }
+    .brand-name { display: block; font-size: 24px; line-height: 1; letter-spacing: -1.3px; font-weight: 900; }
+    .brand-name span { color: #668647; }
+    .brand-sub { display: block; font: 9px var(--mono); margin-top: 6px; letter-spacing: 2.1px; }
+    .top-nav { display: flex; align-items: center; gap: 27px; margin-left: auto; }
+    .top-nav a { font-size: 13px; font-weight: 650; text-underline-offset: 6px; text-decoration: none; padding-block: 12px; }
+    .top-nav a:hover { text-decoration: underline; }
+    .top-nav .nav-play { display: inline-flex; align-items: center; gap: 18px; padding: 11px 16px; background: var(--ink); color: var(--paper); border: 1px solid var(--ink); border-radius: 7px; }
+    .nav-play .icon { width: 17px; height: 17px; }
+    .hero { display: grid; grid-template-columns: 1fr 305px; gap: 32px; align-items: end; padding: 58px 0 53px; position: relative; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; font: 10px var(--mono); letter-spacing: 1.4px; line-height: 1.5; font-weight: 700; }
+    .eyebrow span { width: 8px; height: 8px; background: #8aaa45; box-shadow: 0 0 0 4px #e9eddd; }
+    h1 { margin: 0; font-size: clamp(49px, 6.2vw, 82px); line-height: .99; font-weight: 850; letter-spacing: -4.8px; }
+    h1 .headline-second { display: inline-block; position: relative; }
+    .hero-star { display: inline-block; width: 53px; height: 53px; margin-left: 12px; vertical-align: 2px; transform: rotate(-12deg); fill: var(--lime); stroke: var(--ink); stroke-width: 1.6; }
+    .hero-aside { padding-bottom: 4px; }
+    .hero-aside p { font-size: 15px; line-height: 1.7; color: var(--muted); margin: 0 0 18px; max-width: 315px; }
+    .random-button { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; border: 0; border-bottom: 1px solid #a5ae9c; background: transparent; padding: 6px 0; color: var(--ink); font-weight: 750; font-size: 13px; }
+    .random-button .icon { width: 18px; height: 18px; }
+    .random-button:hover { border-color: var(--ink); }
+    .random-button:hover .icon { transform: rotate(12deg); }
+    .selection { scroll-margin-top: 24px; }
+    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 0 0 20px; }
+    .section-title { display: flex; align-items: center; gap: 10px; }
+    .section-title h2 { margin: 0; font-size: 19px; letter-spacing: -.6px; }
+    .game-count { display: grid; place-items: center; min-width: 27px; height: 23px; padding-inline: 6px; background: #e5e9dc; border-radius: 5px; font: 11px var(--mono); color: #526049; }
+    .filters { display: flex; align-items: center; gap: 4px; padding: 4px; background: #e9ebdf; border: 1px solid #e1e4d8; border-radius: 9px; }
+    .filter { border: 0; color: #56614e; background: transparent; font-size: 12px; font-weight: 650; padding: 9px 15px; min-height: 36px; border-radius: 6px; transition: background .15s; }
+    .filter[aria-pressed="true"] { color: var(--ink); background: #fffef8; box-shadow: 0 1px 3px #25321d14; }
+    .filter:hover { color: var(--ink); background: #f5f6ee; }
+    .games { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; align-items: stretch; }
+    .game-card { border: 1px solid #cdd3c3; border-radius: 16px; overflow: hidden; background: #fffef8; display: flex; flex-direction: column; transition: transform .22s ease, box-shadow .22s ease, border-color .22s; }
+    @media (hover:hover) { .game-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px #223a2811; border-color: #99a48d; } }
+    .poster { position: relative; overflow: hidden; aspect-ratio: 640/360; background: #f1b36f; border-bottom: 1px solid #0000000c; }
+    .poster > svg { display: block; width: 100%; height: 100%; }
+    .poster-label { position: absolute; z-index: 2; top: 18px; left: 20px; display: flex; align-items: center; gap: 7px; font: 9px var(--mono); letter-spacing: 1.5px; font-weight: 700; padding: 7px 10px; background: #fff8e9; color: #493824; border: 1px solid #54402238; border-radius: 4px; }
+    .poster-label .icon { width: 13px; height: 13px; stroke-width: 2.1; }
+    .poster-number { position: absolute; top: 20px; right: 20px; font: 10px var(--mono); color: #594426; letter-spacing: .8px; }
+    .mall .poster { background: #1b204a; }
+    .mall .poster-label { background: var(--lime); border-color: transparent; color: #28351b; }
+    .mall .poster-number { color: #d4daf5; }
+    .card-body { padding: 23px 25px 25px; display: flex; flex: 1; flex-direction: column; }
+    .card-kicker { margin: 0 0 9px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 9px var(--mono); letter-spacing: 1.6px; color: #5e695d; }
+    .card-kicker .tiny-icon { width: 14px; height: 14px; }
+    .card-body h3 { font-size: 29px; font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin: 0 0 11px; }
+    .card-description { color: var(--muted); font-size: 14px; line-height: 1.7; margin: 0 0 17px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding: 0 0 23px; }
+    .tag { font-size: 10px; color: #596353; border: 1px solid #dce0d2; background: #f5f6ed; border-radius: 4px; padding: 5px 8px; font-weight: 550; }
+    .play { display: flex; align-items: center; gap: 11px; padding: 12px 15px; min-height: 53px; border-radius: 7px; border: 1px solid var(--ink); text-decoration: none; color: #fffef8; background: var(--ink); font-size: 13px; font-weight: 750; transition: background .18s, color .18s; }
+    .play .play-symbol { width: 15px; height: 15px; fill: currentColor; stroke: none; }
+    .play .arrow { margin-left: auto; width: 20px; height: 20px; transition: transform .18s; }
+    .play:hover { background: #345145; }
+    .play:hover .arrow { transform: translateX(3px); }
+    .mall .play { background: var(--lime); color: var(--ink); border-color: #c0d884; }
+    .mall .play:hover { background: #c5e775; }
+    .selection-foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding: 17px 2px 0; }
+    .selection-foot p { display: flex; align-items: center; gap: 7px; font: 9px var(--mono); color: #69715f; letter-spacing: .5px; margin: 0; line-height: 1.6; }
+    .selection-foot .icon { width: 13px; height: 13px; }
+    .about { margin-top: 53px; padding: 28px 32px; background: #e8ecdd; border: 1px solid #d8dfca; border-radius: 12px; display: grid; grid-template-columns: 48px 1fr 390px; gap: 24px; align-items: center; }
+    .about-mark { width: 47px; height: 47px; }
+    .about .overline { font: 9px var(--mono); margin: 0 0 8px; letter-spacing: 1.6px; color: #5b6a4e; }
+    .about h2 { font-size: 23px; line-height: 1.14; letter-spacing: -.8px; margin: 0; }
+    .about-copy { font-size: 12px; line-height: 1.8; color: #5a6753; margin: 0; }
+    .about-copy strong { color: #354b2a; font-weight: 650; white-space: nowrap; }
+    .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 27px 0 33px; margin-top: 23px; border-top: 1px solid var(--line); }
+    .footer-brand { font-size: 12px; font-weight: 850; letter-spacing: -.4px; }
+    .footer-note { font: 9px var(--mono); color: #697360; letter-spacing: .5px; }
+    .back-top { font-size: 11px; text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 10px 0 10px 12px; }
+    .back-top .icon { width: 14px; height: 14px; }
+    .back-top:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .cloud-drift { animation: cloud-float 8s ease-in-out infinite; }
+    .mug-float { animation: mug-float 4s ease-in-out infinite; }
+    .spark-float { animation: spark-float 6s ease-in-out infinite; }
+    @keyframes cloud-float { 50% { transform: translateX(7px); } }
+    @keyframes mug-float { 50% { transform: translateY(-5px); } }
+    @keyframes spark-float { 50% { transform: translateY(-5px); } }
+    @media (max-width: 1040px) {
+      .hero { grid-template-columns: 1fr 270px; gap: 24px; }
+      h1 { font-size: 65px; letter-spacing: -3.8px; }
+      .hero-star { width: 42px; height: 42px; margin-left: 5px; }
+      .about { grid-template-columns: 42px 1fr 320px; gap: 20px; }
+      .about h2 { font-size: 21px; }
+    }
+    @media (max-width: 800px) {
+      .wrap { width: calc(100% - 40px); }
+      .site-header { min-height: 83px; }
+      .top-nav { gap: 20px; }
+      .nav-about { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 24px; padding: 40px 0 38px; }
+      h1 { font-size: 68px; }
+      .hero-aside { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+      .hero-aside p { max-width: 395px; margin: 0; font-size: 14px; }
+      .random-button { flex: none; font-size: 12px; }
+      .games { gap: 18px; }
+      .card-body { padding: 21px 20px; }
+      .card-body h3 { font-size: 25px; }
+      .card-description { font-size: 13px; }
+      .poster-label { top: 12px; left: 12px; font-size: 7px; letter-spacing: 1px; padding: 5px 7px; }
+      .poster-label .icon { width: 10px; height: 10px; }
+      .poster-number { right: 13px; top: 14px; font-size: 8px; }
+      .tag { font-size: 9px; padding: 5px 6px; }
+      .about { grid-template-columns: 40px 1fr; gap: 18px; padding: 25px; margin-top: 38px; }
+      .about-copy { grid-column: 2; }
+      .about-mark { align-self: start; }
+      .footer-note { display: none; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 32px); }
+      .site-header { min-height: 77px; gap: 12px; }
+      .brand { gap: 10px; }
+      .brand-symbol { width: 36px; height: 36px; border-radius: 10px; }
+      .brand-symbol .icon { width: 23px; height: 23px; }
+      .brand-name { font-size: 21px; }
+      .brand-sub { font-size: 7px; letter-spacing: 1.6px; }
+      .nav-text { display: none; }
+      .top-nav .nav-play { padding: 10px 12px; gap: 10px; font-size: 11px; }
+      .nav-play .icon { width: 14px; height: 14px; }
+      .hero { padding: 35px 1px 32px; gap: 20px; }
+      .eyebrow { font-size: 8px; letter-spacing: 1.2px; margin-bottom: 18px; }
+      h1 { font-size: clamp(39px, 10.7vw, 64px); letter-spacing: -2.6px; line-height: 1.04; }
+      .hero-star { width: 30px; height: 30px; margin-left: 5px; vertical-align: 1px; }
+      .hero-aside { display: block; padding: 0; }
+      .hero-aside p { font-size: 13px; line-height: 1.75; max-width: 340px; margin-bottom: 10px; }
+      .random-button { min-height: 41px; padding: 5px 0; }
+      .section-head { flex-wrap: wrap; gap: 15px; padding-bottom: 16px; }
+      .section-title { width: 100%; }
+      .section-title h2 { font-size: 18px; }
+      .filters { padding: 3px; }
+      .filter { font-size: 11px; padding: 8px 15px; min-height: 36px; }
+      .games { grid-template-columns: 1fr; gap: 22px; }
+      .game-card { border-radius: 13px; }
+      .poster-label { top: 14px; left: 14px; font-size: 8px; }
+      .poster-number { top: 17px; right: 16px; }
+      .card-body { padding: 22px; }
+      .card-body h3 { font-size: 28px; }
+      .card-description { font-size: 13px; margin-bottom: 16px; }
+      .tags { gap: 6px; padding-bottom: 21px; }
+      .tag { font-size: 10px; padding: 5px 7px; }
+      .play { min-height: 52px; }
+      .selection-foot { align-items: flex-start; }
+      .selection-foot p { font-size: 8px; }
+      .selection-foot .collection-mark { display: none; }
+      .about { margin-top: 33px; padding: 22px 20px; gap: 15px; grid-template-columns: 32px 1fr; }
+      .about-mark { width: 31px; height: 31px; }
+      .about h2 { font-size: 21px; }
+      .about .overline { font-size: 8px; }
+      .about-copy { grid-column: 1 / -1; font-size: 12px; }
+      .site-footer { margin-top: 24px; padding-top: 17px; padding-bottom: 23px; gap: 15px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .game-card:hover, .play:hover .arrow, .random-button:hover .icon { transform: none; }
+    }
+  </style>
+</head>
+<body id="oben">
+  <a class="skip" href="#spiele">Direkt zur Spieleauswahl</a>
+  <!-- Inline icons and illustrations: no image files, fonts or external services needed. -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;overflow:hidden">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+      <symbol id="i-corner" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+      <symbol id="i-controller" viewBox="0 0 24 24"><path d="M7 6h10c2 0 3.1 1.8 3.6 4l1 6c.5 3-2.1 4.2-4 2l-2.1-2h-7l-2.1 2c-1.9 2.2-4.5 1-4-2l1-6C3.9 7.8 5 6 7 6Z"/><path d="M6 10v4m-2-2h4"/><circle cx="16" cy="10" r=".75" fill="currentColor" stroke="none"/><circle cx="18" cy="13" r=".75" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-dice" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="16" cy="16" r="1" fill="currentColor"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4 21 12 7 20Z"/></symbol>
+      <symbol id="i-screen" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></symbol>
+      <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M4 8h12v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Zm12 1h2a3 3 0 0 1 0 6h-2M7 3v2m4-2v2M2 22h17"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 2.5 6.5 7 .5-5.4 4.6 1.7 6.9L12 16.8l-5.8 3.7 1.7-6.9L2.5 9l7-.5Z"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Goering.cc Startseite">
+      <span class="brand-symbol"><svg class="icon" aria-hidden="true"><use href="#i-controller"/></svg></span>
+      <span><span class="brand-name">GOERING<span>.CC</span></span><span class="brand-sub">THE BROWSER ARCADE</span></span>
+    </a>
+    <nav class="top-nav" aria-label="Hauptnavigation">
+      <a class="nav-text" href="#spiele">Die Spiele</a>
+      <a class="nav-about" href="#ueber">Die Arcade</a>
+      <a class="nav-play" href="#spiele">Let&rsquo;s play <svg class="icon" aria-hidden="true"><use href="#i-corner"/></svg></a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="headline">
+      <div>
+        <p class="eyebrow"><span aria-hidden="true"></span> KLEINE ARCADE. GROSSE ABENTEUER.</p>
+        <h1 id="headline">Kleine Pause.<br><span class="headline-second">Gro&szlig;e Runde.<svg class="hero-star" viewBox="0 0 60 60" aria-hidden="true"><path d="m30 3 6.5 16.8L54 13l-6.8 17L57 40l-18.2.6L35 58 23 44 7 52l4-18L0 24l18-4L16 3l14 10Z"/></svg></span></h1>
+      </div>
+      <div class="hero-aside">
+        <p>Kaffee sammeln oder die Mall unsicher machen? Such dir dein Spiel und mach die Pause zum Abenteuer.</p>
+        <button class="random-button" id="random-game" type="button" hidden><svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg> &Uuml;berrasch mich <span aria-hidden="true">&#8599;</span></button>
+      </div>
+    </section>
+
+    <section class="selection" id="spiele" aria-labelledby="games-heading">
+      <div class="section-head">
+        <div class="section-title"><h2 id="games-heading">W&auml;hle dein Abenteuer</h2><span class="game-count" id="game-count" aria-hidden="true">02</span></div>
+        <div class="filters" id="filters" role="group" aria-label="Spiele nach Genre filtern" hidden>
+          <button type="button" class="filter" data-filter="all" aria-pressed="true" aria-controls="game-grid">Alle Spiele</button>
+          <button type="button" class="filter" data-filter="arcade" aria-pressed="false" aria-controls="game-grid">Arcade</button>
+          <button type="button" class="filter" data-filter="adventure" aria-pressed="false" aria-controls="game-grid">Adventure</button>
+        </div>
+      </div>
+      <p id="filter-status" class="sr-only" role="status" aria-live="polite">2 Spiele in der Auswahl.</p>
+      <div class="games" id="game-grid">
+
+        <!-- GAME 1: Keep the folder spelling exactly Kaffe-Tian. -->
+        <article class="game-card coffee" data-genre="arcade" aria-labelledby="coffee-title">
+          <div class="poster" aria-hidden="true">
+            <span class="poster-label"><svg class="icon"><use href="#i-coffee"/></svg> WORLD TOUR</span>
+            <span class="poster-number">GAME / 01</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" focusable="false">
+              <defs>
+                <linearGradient id="coffee-sky" x2="0" y2="1"><stop stop-color="#f7c58c"/><stop offset="1" stop-color="#eea363"/></linearGradient>
+                <pattern id="coffee-grain" width="12" height="12" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="1" height="1" fill="#7e512b" opacity=".10"/></pattern>
+                <pattern id="coffee-ground" width="30" height="20" patternUnits="userSpaceOnUse"><path d="M3 6h7v4H3zm15 9h5v3h-5z" fill="#536850"/></pattern>
+              </defs>
+              <rect width="640" height="360" fill="url(#coffee-sky)"/>
+              <circle cx="468" cy="172" r="137" fill="#f9d29b"/>
+              <circle cx="468" cy="172" r="108" fill="none" stroke="#9b6b3840"/>
+              <circle cx="468" cy="172" r="82" fill="none" stroke="#9b6b3826"/>
+              <rect width="640" height="360" fill="url(#coffee-grain)"/>
+              <g fill="#fff0cf" class="cloud-drift"><path d="M224 43h18V30h36v13h20v14h-74z"/><path d="M532 85h16V72h31v13h24v14h-71z"/><path d="M311 98h12V85h25v13h18v12h-55z"/></g>
+              <g fill="#d79057"><path d="M0 262h22v-25h35v25h15v-41h49v52h28v-25h40v43h24v-43h40v34h33v-52h34v52h22v-16h35v48H0z"/><path d="M536 272h20v-45h35v18h20v-35h29v113H536z"/></g>
+              <path d="M0 299h62v-9h64v10h88v-13h71v13h63v-16h58v16h70v-9h59v9h105v60H0z" fill="#76804f"/>
+              <path d="M0 315h640v45H0z" fill="#314b3e"/>
+              <path d="M0 315h640v8H0z" fill="#a3b85a"/>
+              <rect y="328" width="640" height="32" fill="url(#coffee-ground)"/>
+              <text x="26" y="135" fill="#263b31" font-family="Arial, sans-serif" font-size="71" font-weight="900" letter-spacing="-4">TASSEN</text>
+              <text x="23" y="207" fill="#263b31" font-family="Arial, sans-serif" font-size="90" font-weight="900" letter-spacing="-5">TIAN</text>
+              <text x="30" y="245" fill="#66492d" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">KAFFEE REIN.</text>
+              <text x="30" y="264" fill="#66492d" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">REKORD RAUS.</text>
+              <ellipse cx="466" cy="305" rx="69" ry="10" fill="#314b3e" opacity=".22"/>
+              <g class="mug-float">
+                <g transform="translate(388 120) scale(4)" shape-rendering="crispEdges">
+                  <!-- Coffee, unruly hair, sunglasses, white mug and sneakers. -->
+                  <path d="M6 12h23v2h4v25h-4v3H9v-3H6zM33 16h8v3h3v13h-3v3h-8v-5h6V21h-6z" fill="#283a31"/>
+                  <path d="M9 15h20v2h2v19h-3v3H11v-3H9z" fill="#fff4d6"/>
+                  <path d="M11 17h4v16h-4zM15 35h12v2H15z" fill="#f5d8a4"/>
+                  <path d="M5 9h3V5h5V2h5v3h5V1h5v5h5v5h-3v4H9v-3H5z" fill="#543d2d"/>
+                  <path d="M10 7h5V4h2v5h5V6h5v4h3v3H11z" fill="#76503a"/>
+                  <path d="M8 19h25v3h-2v5H21v-5h-3v5H8z" fill="#20332e"/>
+                  <path d="M10 21h4v2h-4zm13 0h4v2h-4z" fill="#698b79"/>
+                  <path d="M18 31h7v2h-7z" fill="#7d5539"/>
+                  <path d="M3 25h3v4H0v-7h3zM29 39h3v5h5v3H25v-8zM12 39h5v5H8v-3h4z" fill="#24392f"/>
+                  <path d="M25 46h12v2H25zM4 43h13v3H4z" fill="#fff0d1"/>
+                  <path d="M4 42h8v3H2v-2h2z" fill="#24392f"/>
+                </g>
+              </g>
+              <g fill="#935929" stroke="#5b4227" stroke-width="2.5">
+                <g transform="translate(357 240) rotate(-28)"><rect x="-9" y="-13" width="18" height="26" rx="8"/><path d="M0-10C-7 0 7 0 0 10" fill="none"/></g>
+                <g transform="translate(582 208) rotate(25)"><rect x="-9" y="-13" width="18" height="26" rx="8"/><path d="M0-10C-7 0 7 0 0 10" fill="none"/></g>
+              </g>
+              <g class="spark-float" shape-rendering="crispEdges"><path d="M371 71h10v10h11v10h-11v11h-10V91h-11V81h11z" fill="#2e739d"/><path d="M373 73h6v10h11v6h-11v11h-6V89h-11v-6h11z" fill="#79d8ef"/><path d="M591 141h5v-5h4v5h5v4h-5v5h-4v-5h-5z" fill="#fff7d7"/></g>
+              <path d="M269 285h44v5h-44zm13-11h31v3h-31z" fill="#7d562f" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-kicker"><span>ARCADE / RUNNER</span><svg class="icon tiny-icon" aria-hidden="true"><use href="#i-coffee"/></svg></p>
+            <h3 id="coffee-title">Tassen Tian</h3>
+            <p class="card-description">Bohnen sammeln, Hindernissen ausweichen und den n&auml;chsten Rekord knacken. Diese Kaffeepause hat es in sich.</p>
+            <div class="tags" aria-label="Spielthemen"><span class="tag">Highscores</span><span class="tag">Neue Figuren</span><span class="tag">World Tour</span></div>
+            <a class="play" href="./Kaffe-Tian/" aria-label="Tassen Tian spielen"><svg class="icon play-symbol" aria-hidden="true"><use href="#i-play"/></svg> Tassen Tian spielen <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <!-- GAME 2: Upload the actual game separately to Streetwear-Mall/index.html. -->
+        <article class="game-card mall" data-genre="adventure" aria-labelledby="mall-title">
+          <div class="poster" aria-hidden="true">
+            <span class="poster-label"><svg class="icon"><use href="#i-star"/></svg> NEU IN DER AUSWAHL</span>
+            <span class="poster-number">GAME / 02</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" focusable="false">
+              <defs>
+                <linearGradient id="mall-sky" x2="1" y2="1"><stop stop-color="#292b5b"/><stop offset="1" stop-color="#141b38"/></linearGradient>
+                <linearGradient id="mall-floor" x2="0" y2="1"><stop stop-color="#333665"/><stop offset="1" stop-color="#171a35"/></linearGradient>
+                <linearGradient id="mall-window" x2="1" y2="1"><stop stop-color="#6483bd"/><stop offset="1" stop-color="#29365f"/></linearGradient>
+                <pattern id="mall-dots" width="14" height="14" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="1" height="1" fill="#a6b3e7" opacity=".2"/></pattern>
+              </defs>
+              <rect width="640" height="360" fill="url(#mall-sky)"/>
+              <rect width="640" height="360" fill="url(#mall-dots)"/>
+              <path d="M363 26h220v236H363z" fill="#2a3257" stroke="#485277"/>
+              <path d="M370 34h206v13H370z" fill="#64759d"/>
+              <path d="M367 48h-9v201h9M579 48h10v201h-10" fill="#445577"/>
+              <path d="M377 57h60v155h-60zm70 0h60v155h-60zm70 0h49v155h-49z" fill="url(#mall-window)"/>
+              <path d="M390 57v155m58-144 50 86m-97-69 19 36m122-64v155" stroke="#8097c5" stroke-width="2" opacity=".38"/>
+              <path d="M370 111h205v7H370zm0 82h205v7H370z" fill="#1b2140"/>
+              <path d="M361 215h225v9H361zm-7 18h240v9H354zm-9 18h257v12H345z" fill="#526483"/>
+              <path d="M359 219h231m-239 19h245m-252 21h260" stroke="#6bb6c3" opacity=".7"/>
+              <rect x="461" y="82" width="158" height="46" rx="2" fill="#19283e" stroke="#96efd9" stroke-width="2"/>
+              <text x="479" y="112" fill="#b9f4c4" font-family="Consolas, monospace" font-size="27" font-weight="700" letter-spacing="5">DROP</text>
+              <path d="M611 153h29v92h-29z" fill="#7a4f93"/>
+              <path d="M615 158h21v4h-21zm0 12h21v4h-21zm0 12h21v4h-21z" fill="#b894d4"/>
+              <path d="M0 264h640v96H0z" fill="url(#mall-floor)"/>
+              <g stroke="#54618b" stroke-width="1" opacity=".7"><path d="m322 264-320 96m320-96-229 96m229-96-142 96m142-96-56 96m56-96 30 96m-30-96 117 96m-117-96 205 96m-205-96 301 96"/><path d="M0 281h640M0 308h640M0 347h640"/></g>
+              <path d="M0 263h640" stroke="#998aca"/>
+              <text x="25" y="127" fill="#faf9ed" font-family="Arial, sans-serif" font-size="53" font-weight="900" letter-spacing="-2.5">STREETWEAR</text>
+              <text x="23" y="207" fill="#d6f58a" font-family="Arial, sans-serif" font-size="90" font-weight="900" letter-spacing="-5">MALL</text>
+              <text x="29" y="243" fill="#c8cfe8" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="2">THE FASHION HUNT</text>
+              <text x="29" y="276" fill="#a5b5cb" font-family="Consolas, monospace" font-size="8" letter-spacing="1">TIAN / NICO / LENNY / BEN</text>
+              <!-- Stylized cover characters; these are illustrations, not game screenshots. -->
+              <g shape-rendering="crispEdges">
+                <ellipse cx="363" cy="291" rx="24" ry="6" fill="#111a2c" opacity=".6"/>
+                <g transform="translate(339 186) scale(2.2)">
+                  <path d="M5 2h12v3h3v10h-3v3H5v-3H2V5h3z" fill="#171d2d"/>
+                  <path d="M5 7h12v8H5z" fill="#dda980"/><path d="M5 7h12V4H5z" fill="#51413a"/>
+                  <path d="M3 18h16v3h3v16H0V21h3z" fill="#bb8465"/><path d="M5 19h12v18H5z" fill="#d5a282"/>
+                  <path d="M5 23h10v3H5z" fill="#ece0c6"/><path d="M4 37h6v11H4zm9 0h6v11h-6z" fill="#22394a"/>
+                  <path d="M1 46h9v4H1zm12 0h11v4H13z" fill="#e4dfc8"/>
+                </g>
+                <ellipse cx="409" cy="314" rx="30" ry="6" fill="#111a2c" opacity=".7"/>
+                <g transform="translate(379 187) scale(2.6)">
+                  <path d="M5 2h12v3h3v10h-3v3H5v-3H2V5h3z" fill="#161e30"/>
+                  <path d="M5 6h12v9H5z" fill="#c89572"/><path d="M4 3h14v5H4z" fill="#d3cfae"/><path d="M12 7h9v2h-9z" fill="#a6b08c"/>
+                  <path d="M3 18h16v3h3v16H0V21h3z" fill="#729289"/><path d="M6 18h10v19H6z" fill="#91b2a2"/>
+                  <path d="M5 23h11v3H5z" fill="#cedac3"/><path d="M4 37h6v11H4zm9 0h6v11h-6z" fill="#303449"/>
+                  <path d="M1 46h9v4H1zm12 0h11v4H13z" fill="#e5ead9"/>
+                </g>
+                <ellipse cx="536" cy="292" rx="26" ry="6" fill="#111a2c" opacity=".7"/>
+                <g transform="translate(510 179) scale(2.3)">
+                  <path d="M5 2h12v3h3v10h-3v3H5v-3H2V5h3z" fill="#171d2d"/>
+                  <path d="M5 6h12v9H5z" fill="#e0ae85"/><path d="M4 3h14v5H4z" fill="#524638"/>
+                  <path d="M3 18h16v3h3v16H0V21h3z" fill="#b3a4c7"/><path d="M6 18h10v19H6z" fill="#d4c8db"/>
+                  <path d="M9 20h3v5H9z" fill="#666c8a"/><path d="M4 37h6v11H4zm9 0h6v11h-6z" fill="#526276"/>
+                  <path d="M1 46h9v4H1zm12 0h11v4H13z" fill="#e8e8db"/>
+                </g>
+                <ellipse cx="476" cy="329" rx="38" ry="8" fill="#111a2c" opacity=".75"/>
+                <g transform="translate(437 163) scale(3.15)">
+                  <path d="M6 2h13v3h3v13h-3v3H6v-3H3V5h3z" fill="#151c2b"/>
+                  <path d="M6 7h13v11H6z" fill="#d9a87f"/><path d="M5 4h15v4H5z" fill="#6e5942"/>
+                  <path d="M7 11h4v2H7zm8 0h3v2h-3z" fill="#2d3040"/>
+                  <path d="M4 21h17v3h4v18H0V25h4z" fill="#d6dac8"/><path d="M5 21h6v21H5zm10 0h7v21h-7z" fill="#273746"/>
+                  <path d="M6 23h3v18H6zm11 0h3v18h-3z" fill="#465464"/>
+                  <path d="m3 22 19 14-2 3L2 25z" fill="#181e2c"/>
+                  <path d="M13 32h9v7h-9z" fill="#667a65"/><path d="M14 33h7v1h-7z" fill="#8c9a7e"/>
+                  <path d="M4 42h8v9H4zm10 0h8v9h-8z" fill="#7b826d"/><path d="M4 44h3v4H4zm15 0h3v4h-3z" fill="#a2a28b"/>
+                  <path d="M0 50h12v4H0zm14 0h13v4H14z" fill="#f0e9d4"/><path d="M0 53h12v2H0zm14 0h13v2H14z" fill="#76877b"/>
+                </g>
+              </g>
+              <g class="spark-float" fill="#d6f58a"><path d="M309 48h4v-8h3v8h8v3h-8v8h-3v-8h-4z"/><path d="M577 216h4v-7h3v7h7v3h-7v7h-3v-7h-4z"/></g>
+              <g transform="translate(566 281) rotate(12)"><path d="M0 0h31l3 35H-4z" fill="#cbb4e5" stroke="#212a48" stroke-width="2"/><path d="M7 5V-3c0-11 17-11 17 0v8" fill="none" stroke="#cbb4e5" stroke-width="4"/><path d="m10 15 4-6 3 6 6 3-6 3-3 6-4-6-6-3z" fill="#45486e"/></g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-kicker"><span>ACTION / ADVENTURE</span><svg class="icon tiny-icon" aria-hidden="true"><use href="#i-star"/></svg></p>
+            <h3 id="mall-title">Streetwear Mall</h3>
+            <p class="card-description">Eine Mall. Vier Freunde. Dein Style. Entdecke mit Tian, Nico, Lenny und Ben dein n&auml;chstes Streetwear-Abenteuer.</p>
+            <div class="tags" aria-label="Spielthemen"><span class="tag">Streetwear</span><span class="tag">Mall-Abenteuer</span><span class="tag">Deine Crew</span></div>
+            <a class="play" href="./Streetwear-Mall/" aria-label="Streetwear Mall spielen"><svg class="icon play-symbol" aria-hidden="true"><use href="#i-play"/></svg> Streetwear Mall spielen <svg class="icon arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+
+        <!-- WEITERE SPIELE HIER EINFUEGEN:
+             Copy a complete <article class="game-card ..."> above.
+             Set a UNIQUE title id, aria-labelledby, poster SVG ids and game URL.
+             Put that game's files into the linked folder, with index.html as entry point.
+             data-genre="arcade" or "adventure" assigns its filter category.
+             The JavaScript automatically includes all .game-card .play links.
+        -->
+      </div>
+      <div class="selection-foot">
+        <p><svg class="icon" aria-hidden="true"><use href="#i-screen"/></svg> DEIN N&Auml;CHSTES ABENTEUER BEGINNT IM BROWSER.</p>
+        <p class="collection-mark">GOERING ORIGINALS &#10022;</p>
+      </div>
+    </section>
+
+    <section class="about" id="ueber" aria-labelledby="about-title">
+      <svg class="about-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M4 17h11V6h18v11h11v15H33v10H15V32H4z" fill="#d6f58a" stroke="#40513b" stroke-width="1.5"/><path d="M17 20h4m-2-2v4m10-3h.01M27 29c-2 2-5 2-7 0" stroke="#40513b" stroke-width="2" stroke-linecap="round"/></svg>
+      <div><p class="overline">VON TIAN. F&Uuml;R DEINE PAUSE.</p><h2>Gebaut aus Ideen.<br>Gespielt aus Spa&szlig;.</h2></div>
+      <p class="about-copy">Das hier ist meine kleine Arcade f&uuml;r selbst entwickelte Spiele. Mal Kaffee-Chaos, mal Streetwear-Abenteuer. Such dir deine Welt aus und hab Spa&szlig; beim Zocken. <strong>&mdash; Tian</strong></p>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap">
+    <span class="footer-brand">GOERING.CC</span>
+    <span class="footer-note">ENTWICKELT VON TIAN G&Ouml;RING. GESPIELT VON DIR.</span>
+    <a class="back-top" href="#oben">Nach oben <svg class="icon" aria-hidden="true"><use href="#i-up"/></svg></a>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+      // Progressive enhancement: both game links also work without JavaScript.
+      // This homepage uses no cookies, analytics, local storage or external requests.
+      const cards = Array.from(document.querySelectorAll('.game-card'));
+      const filters = document.getElementById('filters');
+      const count = document.getElementById('game-count');
+      const status = document.getElementById('filter-status');
+      const randomButton = document.getElementById('random-game');
+      const gameLinks = cards.map(card => card.querySelector('a.play')).filter(Boolean);
+
+      if (filters && cards.length) {
+        filters.hidden = false;
+        const buttons = Array.from(filters.querySelectorAll('[data-filter]'));
+        const update = category => {
+          let visible = 0;
+          cards.forEach(card => {
+            const show = category === 'all' || card.dataset.genre === category;
+            card.hidden = !show;
+            if (show) visible += 1;
+          });
+          buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === category)));
+          if (count) count.textContent = String(visible).padStart(2, '0');
+          if (status) status.textContent = `${visible} ${visible === 1 ? 'Spiel' : 'Spiele'} in der Auswahl.`;
+        };
+        buttons.forEach(button => button.addEventListener('click', () => update(button.dataset.filter)));
+        update('all');
+      }
+      if (randomButton && gameLinks.length) {
+        randomButton.hidden = false;
+        // Surprise always chooses from the full collection, regardless of the genre filter.
+        randomButton.addEventListener('click', () => {
+          const selected = gameLinks[Math.floor(Math.random() * gameLinks.length)];
+          window.location.assign(selected.href);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
